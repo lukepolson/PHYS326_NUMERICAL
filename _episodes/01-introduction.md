@@ -93,7 +93,7 @@ def my_integrand(theta, x, y):
 ~~~
 {: .language-python}
 
-Note that the variable we want to integrate over **comes first in the arguments** (in this case $$\theta$$), followed by addition arguments $$x$ and $$y$$. Next we use the scipy.integrate function **quad** to perform an integral. We import it here and then use it:
+Note that the variable we want to integrate over **comes first in the arguments** (in this case $$\theta$$), followed by addition arguments $$x$$ and $$y$$. Next we use the scipy.integrate function **quad** to perform an integral. We import it here and then use it:
 
 ~~~
 from scipy.integrate import quad
