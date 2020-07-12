@@ -56,7 +56,15 @@ f = func(x,1)
 ~~~
 {: .language-python}
 
+Now we will plot $$f(x,1)$$ vs. $$x$$ using `matplotlib.pyplot`. Since we imported this as `plt`, all the matplotlib functions will be `plt.___`. Below we create plot and add the $$x$$ and $$y$$ labels. Finally, we use `plt.show()` so the plot shows up in jupyter notebook.
 
+~~~
+plt.plot(x, f) # Create a canvas and plot the data
+plt.xlabel('x', fontsize=16) # Add an x-label and specify the font size
+plt.ylabel('f(x,1)', fontsize=16) 
+plt.show() # Show the plot in the jupyter notebook
+~~~
+{: .language-python}
 
 
 {% include links.md %}
