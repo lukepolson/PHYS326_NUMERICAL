@@ -15,7 +15,7 @@ keypoints:
 >
 > 1. $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$
 > 2. $$f(\pi/2, y)$$ vs. $$y$$ for $$y$$ in the interval $$(-3, 3)$$
-{: .callout}
+{: .challenge}
 
 The key is to first define a python function which represents $$f(x,y)$$. We will need pythons numerical library and plotting library, so we import `numpy` and `matplotlib.pyplot`
 
@@ -65,6 +65,15 @@ plt.ylabel('f(x,1)', fontsize=16)
 plt.show() # Show the plot in the jupyter notebook
 ~~~
 {: .language-python}
+
+Now, on your own, create a plot of $$f(\pi/2, y)$$ for $$y$$ in the range $$(-3 ,3)$$.
+
+> ## Question 2
+> Consider the function
+> $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$
+> 1. Write a program to find $f(x,y)$ for arbitrary valuea of $x$ and $y$
+> 2. Plot $f(x,1/2)$ vs. $x$ for $x$ in the interval $(-2, 2)$
+{: .challenge}
 
 
 {% include links.md %}
