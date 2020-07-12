@@ -3,11 +3,18 @@ title: "Tutorial 1"
 teaching: 0
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "Question 1: Basic NumPy and matplotlib usage"
+- "Question 2: Evaluating integrals numerically"
+- "Question 3: How to make expressions containing undefined variables plotable"
 objectives:
-- "First learning objective. (FIXME)"
+- "Use NumPy to get domain and range of functions for plotting"
+- "Use matplotlib to plot simple functions"
+- "Use scipy to evaluate basic integrals"
+- "Use mathematical tricks to make complicated functions plotable numerically"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "NumPy and matplotlib are the standard python libraries you will use in this course"
+- "SciPy has methods for evaluating integrals numerically"
+- "Through clever use of algebra, one can plot complicated functions with undefined variables"
 ---
 
 > ## Question 1
@@ -146,10 +153,31 @@ it *is possible* to plot
 
 $$\frac{4 \pi \epsilon_0 R^2}{q} |\vec{E}| = \frac{1}{(x/R)^2 + (y/R)^2} $$
 
-for $$(x/R)$$ in the range (-2, 2) when $$y/R=1$$ instead. 
+for $$(x/R)$$ in the range (-2, 2) when $$y/R=1$$ instead. Even though the question says "plot the magnitude of the electric field" (which is technically $$|\vec{E}|$$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 |\vec{E}|/q$$ the instead. **This will show up in 3rd/4th/graduate courses, and in research all the time**. It is up to you to rearrange the variables to find **something** that you can plot numerically. Defining our electric field function:
 
-Even though the question says "plot the magnitude of the electric field" (which is technically $|\vec{E}|$), this cannot be done numerically, so you'll have to plot $4 \pi \epsilon_0 R^2 |\vec{E}|/q$ the instead. **This will show up in 3rd/4th/graduate courses, and in research all the time**. It is up to you to rearrange the variables to find **something** that you can plot numerically. 
+~~~
+def func(x_R, y_R):
+    return 1/(x_R**2+y_R**2)
+~~~
+{: .language-python}
 
+Now we use numpy to evaluate our function at all the given $$x$$ values. Since our array is actually of values $$x/R$$ and not $$x$$, I like to name the variable $$x_R$$.
+
+~~~
+x_R = np.linspace(-2, 2, 1000)
+f = func(x_R, 1)
+~~~
+{: .language-python}
+
+Finally, we plot
+
+~~~
+plt.plot(x_R, f)
+plt.xlabel('$x/R$', fontsize=16)
+plt.ylabel(r'$\frac{4 \pi \epsilon_0 R^2}{q}|\vec{E}|$', fontsize=16)
+plt.show()
+~~~
+{: .language-python}
 
 
 
