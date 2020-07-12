@@ -151,7 +151,7 @@ it *is possible* to plot
 
 $$\frac{4 \pi \epsilon_0 R^2}{q} |\vec{E}| = \frac{1}{(x/R)^2 + (y/R)^2}$$
 
-for $$(x/R)$$ in the range $$(-2, 2)$$ when $$y/R=1$$ instead. Even though the question says *plot the magnitude of the electric field* (which is technically $$ |\vec{E}| $$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 E/q$$ the instead.
+for $$(x/R)$$ in the range $$(-2, 2)$$ when $$y/R=1$$ instead. Even though the question says *plot the magnitude of the electric field* (which is technically $$ \abs{\vec{E}} $$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 \abs{\vec{E}}/q$$ the instead.
 
 ~~~
 def func(x_R, y_R):
