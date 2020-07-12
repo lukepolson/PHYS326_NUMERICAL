@@ -3,9 +3,9 @@ title: "Tutorial 1"
 teaching: 0
 exercises: 0
 questions:
-- "Question 1: Consider the function $$f(x,y) = e^{-y}\sin(x)$$. Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
-- "Question 2: Consider the function $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$.  Plot $$f(x,1/2)$$ vs. $$x$$ for $$x$$ in the interval $$(-2, 2)$$"
-- "Question 3: Consider the formula for the magnitude of the electric field from a point charge at the origin: $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} $$. Plot the magnitude of the electric field as a function of $$x$$ in the range $$(-2R, 2R)$$ when $$y=R$$ and $$z=0$$"
+- "Question 1"
+- "Question 2"
+- "Question 3"
 objectives:
 - "Use NumPy to get domain and range of functions for plotting"
 - "Use matplotlib to plot simple functions"
@@ -18,7 +18,7 @@ keypoints:
 ---
 
 # Question 1
-Consider the function $$f(x,y) = e^{-y}\sin(x)$$. Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
+> Consider the function $$f(x,y) = e^{-y}\sin(x)$$. Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
 
 The key is to first define a python function which represents $$f(x,y)$$. We will need pythons numerical library and plotting library, so we import `numpy` and `matplotlib.pyplot`
 
@@ -74,13 +74,13 @@ plt.show() # Show the plot in the jupyter notebook
 {: .challenge}
 
 # Question 2
-Consider the function 
+> Consider the function 
 
-$$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$
+> $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$
 
-1. Write a program to find $$f(x,y)$$ for arbitrary values of $$x$$ and $$y$$
-2. Find $$f(1,1)$$.
-3. Plot $$f(x,1/2)$$ vs. $$x$$ for $$x$$ in the interval $$(-2, 2)$$
+> 1. Write a program to find $$f(x,y)$$ for arbitrary values of $$x$$ and $$y$$
+> 2. Find $$f(1,1)$$.
+> 3. Plot $$f(x,1/2)$$ vs. $$x$$ for $$x$$ in the interval $$(-2, 2)$$
 
 Now our function is a little more complicated: we need to solve an integral to obtain our function. Lucky for us, python has plenty of numerical integration techniques embedded in numpy: **no need to solve integrals!** Lets slowly go through the proper method to solve integrals in python.
 
