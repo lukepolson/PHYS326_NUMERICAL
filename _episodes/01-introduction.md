@@ -3,7 +3,7 @@ title: "Tutorial 1"
 teaching: 0
 exercises: 0
 questions:
-- "Question 1: Consider the function"
+- "Question 1: Consider the function $$x$$"
 - "Question 2: Consider the function"
 - "Question 3: Consider the formula"
 objectives:
