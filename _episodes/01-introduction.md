@@ -149,9 +149,9 @@ $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{x^2+y^2} = \frac{1}{4 \pi \eps
 
 it *is possible* to plot
 
-$$\frac{4 \pi \epsilon_0 R^2}{q} |\vec{E}| = \frac{1}{(x/R)^2 + (y/R)^2} $$
+$$\frac{4 \pi \epsilon_0 R^2}{q} |\vec{E}| = \frac{1}{(x/R)^2 + (y/R)^2}$$
 
-for $$(x/R)$$ in the range (-2, 2) when $$y/R=1$$ instead. Even though the question says "plot the magnitude of the electric field" (which is technically $$|\vec{E}|$$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 |\vec{E}|/q$$ the instead. **This will show up in 3rd/4th/graduate courses, and in research all the time**. It is up to you to rearrange the variables to find **something** that you can plot numerically. Defining our electric field function:
+for $$(x/R)$$ in the range $$(-2, 2)$$ when $$y/R=1$$ instead. Even though the question says *plot the magnitude of the electric field* (which is technically $$|\vec{E}|$$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 |\vec{E}|/q$$ the instead. **This will show up in 3rd/4th/graduate courses, and in research all the time**. It is up to you to rearrange the variables to find **something** that you can plot numerically. Defining our electric field function:
 
 ~~~
 def func(x_R, y_R):
