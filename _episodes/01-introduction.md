@@ -137,6 +137,11 @@ plt.grid()
 ~~~
 {: .language-python}
 
+> ## Your turn
+> Consider now the different function
+> $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (y-\sin(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$
+> Plot $$f(1/2,y)$$ vs. $$y$$ for $$y$$ in the interval $$(-2, 2)$$
+{: .challenge}
 
 # Question 3
 > Consider the formula for the magnitude of the electric field from a point charge at the origin:
