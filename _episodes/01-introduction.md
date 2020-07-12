@@ -3,9 +3,9 @@ title: "Tutorial 1"
 teaching: 0
 exercises: 0
 questions:
-- "Question 1: Consider the function $$x$$"
-- "Question 2: Consider the function"
-- "Question 3: Consider the formula"
+- "Question 1: Consider the function $$f(x,y) = e^{-y}\sin(x)$$. Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
+- "Question 2: Consider the function $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$.  Plot $$f(x,1/2)$$ vs. $$x$$ for $$x$$ in the interval $$(-2, 2)$$"
+- "Question 3: Consider the formula for the magnitude of the electric field from a point charge at the origin: $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} $$. Plot the magnitude of the electric field as a function of $$x$$ in the range $$(-2R, 2R)$$ when $$y=R$$ and $$z=0$$"
 objectives:
 - "Use NumPy to get domain and range of functions for plotting"
 - "Use matplotlib to plot simple functions"
