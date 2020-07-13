@@ -81,9 +81,7 @@ def f(x_R,a):
 ~~~
 {: .language-python}
 
-> ## Machine Learning and Artificial Intelligence
-> In our current problem we are considering a function $$f(x;a)$$; in other words, there is one model parameter $$a$$. This is the same mathematical formulation that is used in machine learning: a **neural network** is of the form $$f(x;a_1,a_2,...)$$ where typically there are millions of $$a$$ values. Machine learning is typically more complicated: for example, in image classification, $$x$$ is now a 3D image (height, width, color) and each $$a_i$$ corresponds to one neuron. In addition, $$f(x;a_1,a_2)$$ is no longer a number but rather a string that describes the image.
-{: .challenge}
+
 
 In this case our `xdata` is some points in $$x/R:100 \to 110$$ and `ydata` is the value of the potential in this region. Lets obtain `xdata` and `ydata`.
 
@@ -103,6 +101,7 @@ Now we are ready for curve fitting. Here we go over the scipy curve fitting mode
 Lets code up our curve_fit:
 
 ~~~
+from scipy.optimize import curve_fit
 fit_results = curve_fit(fitted_function, x_data, y_data, p0=[1])
 print(fit_results)
 ~~~
@@ -160,7 +159,28 @@ plt.show()
 ~~~
 {: .language-python}
 
-Clearly the fit (done in the region $x:100R \to 110R$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$.
+Clearly the fit (done in the region $x:100R \to 110R$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$ which is as to be expected.
+
+> ## Machine Learning and Artificial Intelligence
+> In our current problem we are considering a function $$f(x;a)$$; in other words, there is one model parameter $$a$$. This is the same mathematical formulation that is used in machine learning: a **neural network** is of the form $$f(x;a_1,a_2,...)$$ where typically there are millions of $$a$$ values. Machine learning is typically more complicated: for example, in image classification, $$x$$ is now a 3D image (height, width, color) and each $$a_i$$ corresponds to one neuron. In addition, $$f(x;a_1,a_2)$$ is no longer a number but rather a string that describes the image.
+{: .challenge}
+
+# Question 3
+> Using your fit value for $$a$$, re-express the formula for $$V(x\hat{x})$$. Compare it to the formula for the potential $$V(x \hat{x})$$ for a point charge at the origin. Does this look familiar? Why is this the case? Comment on why, in question 2, the fit better extrapolates to the region $$x:200R \to 210R$$ than to the region $$x:2R \to 5R$$.
+
+Using our fit we have
+
+$$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x}) \approx \frac{a}{x/R}$$
+
+or
+
+$$V(x\hat{x}) \approx \left( \frac{Qa}{8 \pi^2 \epsilon_0 x} \right) = \frac{a}{2 \pi}\frac{Q}{4 \pi \epsilon_0 x}$$
+
+If you print `a_fit` you should find that it is approximately equal to $$2 \pi$$ and thus 
+
+$$V(x\hat{x}) \approx \frac{Q}{4 \pi \epsilon_0 x}$$
+
+which is precisely what the potential would be for a point charge at the origin. The reason why this is the case is because when we're far from the charge source ($x=100R$ away) the charge source effectively *looks* like a point charge at the origin.
 
 
 {% include links.md %}
