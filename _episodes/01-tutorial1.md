@@ -1,7 +1,7 @@
 ---
 title: "Tutorial 1"
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 30
 questions:
 - "Question 1"
 - "Question 2"
