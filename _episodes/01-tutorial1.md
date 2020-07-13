@@ -127,7 +127,7 @@ f = np.vectorize(func)(x, 0.5)
 ~~~
 {: .language-python}
 
-Now lets plot $f(x,1/2)$ for $x$ in the range (-1/2,1/2)
+Now lets plot $$f(x,1/2)$$ for $$x$$ in the range (-1/2,1/2)
 
 ~~~
 plt.plot(x,f)
