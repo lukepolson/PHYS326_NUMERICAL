@@ -112,7 +112,7 @@ def func(x,y):
 ~~~
 {: .language-python}
 
-Now we can solve the integral for arbitrary $x$ and $y$:
+Now we can solve the integral for arbitrary $$x$$ and $$y$$:
 
 ~~~
 func(1,1)
