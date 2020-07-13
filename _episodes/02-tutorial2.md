@@ -21,10 +21,10 @@ Consider a uniform line-charge distribution parametetrized by $$\theta$$ with to
 
 $$\vec{r} = (R\cos(2\theta), R\sin(2\theta), R\theta)$$
 
-for $-\pi \leq \theta \leq \pi$. This represents a ''spring'' of charge of with total $Q$. 
+for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
 
 ## Question 1
-> Plot the potential along the $x$ axis for $x:2R \to 10R$.
+> Plot the potential along the $$x$$ axis for $$x:2R \to 10R$$.
 
 It can be shown that
 
@@ -65,13 +65,102 @@ plt.show()
 {: .language-python}
 
 # Question 2
-> For the region $x:100R \to 110R$, fit the potential to the curve $f(x;a)=\frac{a}{x/R}$. What value of $a$ do you get? Then, using this value of $a$, plot $V(x\hat{x})$ and $f(x;a)$ on the same plot in 
-> * the region $x:2R \to 5R$.
-> * the region $x:200R \to 210R$
+> For the region $$x:100R \to 110R$$, fit the potential to the curve $$f(x;a)=\frac{a}{x/R}$$. What value of $$a$$ do you get? Then, using this value of $$a$$, plot $$V(x\hat{x})$$ and $$f(x;a)$$ on the same plot in 
+> * the region $$x:2R \to 5R$$.
+> * the region $$x:200R \to 210R$$
+
+You will recall fitting a best fit line to data points in some of your first and second year labs. Generally when fitting a curve you need
+1. Some data which I will call `xdata` and `ydata`
+2. Some function that you believe accurately represents the data which I will call `f`.
+
+We need to ask ourselves: what is `xdata` and `ydata` and what is the function `f`? In this case we were told the function `f`: $$f(x;a = \frac{a}{x/R}$$. I include a ";" rather than a "," in $$f(x;a)$$ because $$x$$ is the domain of the function but $$a$$ is some parameter that we adjust. Why did we choose this functional form? Well we know that $$V(r) \sim 1/r$ for small point charges. As we move farther and farther from the spring, it will look more and more like a point charge and thus the potential should have this form. Lets define this function
+
+~~~
+def f(x_R,a):
+    return a/x_R
+~~~
+{: .language-python}
+
+> ## Machine Learning and Artificial Intelligence
+> In our current problem we are considering a function $$f(x;a)$$; in other words, there is one model parameter $$a$$. This is the same mathematical formulation that is used in machine learning: a **neural network** is of the form $$f(x;a_1,a_2,...)$$ where typically there are millions of $$a$$ values. Machine learning is typically more complicated: for example, in image classification, $$x$$ is now a 3D image (height, width, color) and each $$a_i$$ corresponds to one neuron. In addition, $$f(x;a_1,a_2)$$ is no longer a number but rather a string that describes the image.
+{: .challenge}
+
+In this case our `xdata` is some points in $$x/R:100 \to 110$$ and `ydata` is the value of the potential in this region. Lets obtain `xdata` and `ydata`.
+
+~~~
+x_data = np.linspace(100, 110, 100)
+y_data = np.array([potential(x_R) for x_R in x_data])
+~~~
+{: .language-python}
+
+Now we are ready for curve fitting. Here we go over the scipy curve fitting model: documentation can be found [here](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). For basic use, the function is of the form `curve_fit(f, xdata, ydata, p0)`.
+
+* `f`: The function we are trying to ''fit''. By ''fit'' we mean the function has a domain $x \in \mathbb{R}$ but also has some constants $c_1$, $c_2$, ... that specify the shape of the function. For example, the function $f(x; c_1, c_2) = c_1 x + c_2 x^2$ takes in all real numbers for $x$ and its shape is specified by $c_1$ and $c_2$. 
+* `x_data` and `y_data`: these correspond to the points we want to fit the function to. Our goal is to choose $c_1$ and $c_2$ such that $f(x_{data}; c_1, c_2) \approx y_{data}$. In our example we have a function we want to fit $f(x;a)$ and the `x_data` are values of $x$ in ($100R$,$110R$) and and `y_data` is $V(x)$. 
+* `p0` Are initial *guesses* of what we believe $c_1$ and $c_2$ should be. If our initial guesses aren't close enough, then scipy will never converge to the optimal parameters. In our case we need to pick a "good enough" initial guess for $$a$$
 
 
+Lets code up our curve_fit:
+
+~~~
+fit_results = curve_fit(fitted_function, x_data, y_data, p0=[1])
+print(fit_results)
+~~~
+{: .language-python}
+
+Take a look at the print statement of `print(fit_results)`. You'll see it returns a tuple where the first array contains $c_1$, $c_2$, ... (in our case we only have one fit parameter $a$ so the array is just a length of 1) and the second array contains error information (no need to worry about that in this course). Lets extract the value for $a$:
+
+~~~
+a_fit = fit_results[0][0]
+~~~
+{: .language-python}
 
 
+Lets see how good the fit is:
+~~~
+plt.plot(x_data, y_data, label='Potential Due To Spring')
+plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit', ls='--')
+plt.xlabel('$x/R$', fontsize=14)
+plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.grid()
+plt.legend()
+plt.show()
+~~~
+{: .language-python}
+
+Now lets see how well it does in the region $$x:2R \to 5R$$:
+
+~~~
+x_data = np.linspace(2, 5, 100)
+y_data = np.array([potential(x_R) for x_R in x_data])
+
+plt.plot(x_data, y_data, label='Potential Due To Spring')
+plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit')
+plt.xlabel('$x/R$', fontsize=14)
+plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.grid()
+plt.legend()
+plt.show()
+~~~
+{: .language-python}
+
+Not so good in this region! What about the region $$x:200R \to 210R$$?
+
+~~~
+x_data = np.linspace(200, 210, 100)
+y_data = np.array([potential(x_R) for x_R in x_data])
+
+plt.plot(x_data, y_data, label='Potential Due To Spring')
+plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit')
+plt.xlabel('$x/R$', fontsize=14)
+plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.grid()
+plt.legend()
+plt.show()
+~~~
+{: .language-python}
+
+Clearly the fit (done in the region $x:100R \to 110R$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$.
 
 
 {% include links.md %}
