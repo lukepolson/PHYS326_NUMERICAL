@@ -93,9 +93,9 @@ y_data = np.array([potential(x_R) for x_R in x_data])
 
 Now we are ready for curve fitting. Here we go over the scipy curve fitting model: documentation can be found [here](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). For basic use, the function is of the form `curve_fit(f, xdata, ydata, p0)`.
 
-* `f`: The function we are trying to ''fit''. By ''fit'' we mean the function has a domain $x \in \mathbb{R}$ but also has some constants $c_1$, $c_2$, ... that specify the shape of the function. For example, the function $f(x; c_1, c_2) = c_1 x + c_2 x^2$ takes in all real numbers for $x$ and its shape is specified by $c_1$ and $c_2$. 
-* `x_data` and `y_data`: these correspond to the points we want to fit the function to. Our goal is to choose $c_1$ and $c_2$ such that $f(x_{data}; c_1, c_2) \approx y_{data}$. In our example we have a function we want to fit $f(x;a)$ and the `x_data` are values of $x$ in ($100R$,$110R$) and and `y_data` is $V(x)$. 
-* `p0` Are initial *guesses* of what we believe $c_1$ and $c_2$ should be. If our initial guesses aren't close enough, then scipy will never converge to the optimal parameters. In our case we need to pick a "good enough" initial guess for $$a$$
+* `f`: The function we are trying to ''fit''. By ''fit'' we mean the function has a domain $$x \in \mathbb{R}$$ but also has some constants $$c_1, c_2$$, ... that specify the shape of the function. For example, the function $$f(x; c_1, c_2) = c_1 x + c_2 x^2$$ takes in all real numbers for $$x$$ and its shape is specified by $$c_1$$ and $$c_2$$. 
+* `x_data` and `y_data`: these correspond to the points we want to fit the function to. The goal is to choose $$c_1$$ and $$c_2$$ such that $$f(x_{data}; c_1, c_2) \approx y_{data}$$. In our example we have a function we want to fit $$f(x;a)$$ and the `x_data` are values of $$x$$ in $$(100R,110R)$$ and and `y_data` is $$V(x)$$. 
+* `p0` Are initial *guesses* of what we believe $$c_1$$ and $$c_2$$ should be. If our initial guesses aren't close enough, then scipy will never converge to the optimal parameters. In our case we need to pick a "good enough" initial guess for $$a$$
 
 
 Lets code up our curve_fit:
@@ -107,7 +107,7 @@ print(fit_results)
 ~~~
 {: .language-python}
 
-Take a look at the print statement of `print(fit_results)`. You'll see it returns a tuple where the first array contains $c_1$, $c_2$, ... (in our case we only have one fit parameter $a$ so the array is just a length of 1) and the second array contains error information (no need to worry about that in this course). Lets extract the value for $a$:
+Take a look at the print statement of `print(fit_results)`. You'll see it returns a tuple where the first array contains $$c_1$$, $$c_2$$, ... (in our case we only have one fit parameter $$a$$ so the array is just a length of 1) and the second array contains error information (no need to worry about that in this course). Lets extract the value for $$a$$:
 
 ~~~
 a_fit = fit_results[0][0]
