@@ -159,7 +159,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-Clearly the fit (done in the region $x:100R \to 110R$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$ which is as to be expected.
+Clearly the fit (done in the region $$x:100R \to 110R$$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$ which is as to be expected.
 
 > ## Machine Learning and Artificial Intelligence
 > In our current problem we are considering a function $$f(x;a)$$; in other words, there is one model parameter $$a$$. This is the same mathematical formulation that is used in machine learning: a **neural network** is of the form $$f(x;a_1,a_2,...)$$ where typically there are millions of $$a$$ values. Machine learning is typically more complicated: for example, in image classification, $$x$$ is now a 3D image (height, width, color) and each $$a_i$$ corresponds to one neuron. In addition, $$f(x;a_1,a_2)$$ is no longer a number but rather a string that describes the image.
