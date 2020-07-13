@@ -1,20 +1,17 @@
 ---
 title: "Tutorial 2"
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 30
 questions:
 - "Question 1"
 - "Question 2"
 - "Question 3"
 objectives:
-- "Use NumPy to get domain and range of functions for plotting"
-- "Use matplotlib to plot simple functions"
-- "Use scipy to evaluate basic integrals"
-- "Use mathematical tricks to make complicated functions plotable numerically"
+- "Practice evaluating numerical integrals in python"
+- "Learn to use the `curve_fit` function in scipy"
 keypoints:
-- "NumPy and matplotlib are the standard python libraries you will use in this course"
-- "SciPy has methods for evaluating integrals numerically"
-- "Through clever use of algebra, one can plot complicated functions with undefined variables"
+- "One can use numerical integration to solve for the potential of complicated charge distributions"
+- "SciPy has functions for fitting data to complicated funcitonal forms"
 ---
 
 Consider a uniform line-charge distribution parametetrized by $$\theta$$ with total charge $$Q$$ located at
