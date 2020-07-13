@@ -180,7 +180,7 @@ If you print `a_fit` you should find that it is approximately equal to $$2 \pi$$
 
 $$V(x\hat{x}) \approx \frac{Q}{4 \pi \epsilon_0 x}$$
 
-which is precisely what the potential would be for a point charge at the origin. The reason why this is the case is because when we're far from the charge source ($x=100R$ away) the charge source effectively *looks* like a point charge at the origin.
+which is precisely what the potential would be for a point charge at the origin. The reason why this is the case is because when we're far from the charge source ($$x=100R$$ away) the charge source effectively *looks* like a point charge at the origin.
 
 
 {% include links.md %}
