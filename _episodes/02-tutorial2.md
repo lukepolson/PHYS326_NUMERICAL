@@ -3,9 +3,8 @@ title: "Tutorial 2"
 teaching: 30
 exercises: 30
 questions:
-- "Question 1"
-- "Question 2"
-- "Question 3"
+- "Part 1: Evaluating numerical integrals to obtain potential"
+- "Part 2: Fitting data to curves"
 objectives:
 - "Practice evaluating numerical integrals in python"
 - "Learn to use the `curve_fit` function in scipy"
@@ -20,7 +19,7 @@ $$\vec{r} = (R\cos(2\theta), R\sin(2\theta), R\theta)$$
 
 for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
 
-## Question 1
+## Part 1
 > Plot the potential along the $$x$$ axis for $$x:2R \to 10R$$.
 
 It can be shown that
@@ -162,7 +161,6 @@ Clearly the fit (done in the region $$x:100R \to 110R$$) better extrapolates to 
 > In our current problem we are considering a function $$f(x;a)$$; in other words, there is one model parameter $$a$$. This is the same mathematical formulation that is used in machine learning: a **neural network** is of the form $$f(x;a_1,a_2,...)$$ where typically there are millions of $$a$$ values. Machine learning is typically more complicated: for example, in image classification, $$x$$ is now a 3D image (height, width, color) and each $$a_i$$ corresponds to one neuron. In addition, $$f(x;a_1,a_2)$$ is no longer a number but rather a string that describes the image.
 {: .challenge}
 
-# Question 3
 > Using your fit value for $$a$$, re-express the formula for $$V(x\hat{x})$$. Compare it to the formula for the potential $$V(x \hat{x})$$ for a point charge at the origin. Does this look familiar? Why is this the case? Comment on why, in question 2, the fit better extrapolates to the region $$x:200R \to 210R$$ than to the region $$x:2R \to 5R$$.
 
 Using our fit we have
