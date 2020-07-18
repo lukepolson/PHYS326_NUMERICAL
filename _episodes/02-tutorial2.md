@@ -70,7 +70,7 @@ You will recall fitting a best fit line to data points in some of your first and
 1. Some data which I will call `xdata` and `ydata`
 2. Some function that you believe accurately represents the data which I will call `f`.
 
-We need to ask ourselves: what is `xdata` and `ydata` and what is the function `f`? In this case we were told the function `f`: $$f(x;a = \frac{a}{x/R}$$. I include a ";" rather than a "," in $$f(x;a)$$ because $$x$$ is the domain of the function but $$a$$ is some parameter that we adjust. Why did we choose this functional form? Well we know that $$V(r) \sim 1/r$ for small point charges. As we move farther and farther from the spring, it will look more and more like a point charge and thus the potential should have this form. Lets define this function
+We need to ask ourselves: what is `xdata` and `ydata` and what is the function `f`? In this case we were told $$f(x;a) = \frac{a}{x/R}$$. I include a ";" rather than a "," in $$f(x;a)$$ because $$x$$ is the domain of the function but $$a$$ is some parameter that we adjust. Why did we choose this functional form? Well we know that $$V(r) \sim 1/r$$ for small point charges. As we move farther and farther from the spring, it will look more and more like a point charge and thus the potential should have this form. Lets define this function
 
 ~~~
 def f(x_R,a):
