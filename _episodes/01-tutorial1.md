@@ -3,9 +3,9 @@ title: "Tutorial 1"
 teaching: 30
 exercises: 30
 questions:
-- "Question 1"
-- "Question 2"
-- "Question 3"
+- "Part 1: Obtaining and plotting simple functions"
+- "Part 2: Evaluating numerical integrals"
+- "Part 3: Plotting functions with undefined variables"
 objectives:
 - "Use NumPy to get domain and range of functions for plotting"
 - "Use matplotlib to plot simple functions"
@@ -17,7 +17,7 @@ keypoints:
 - "Through clever use of algebra, one can plot complicated functions with undefined variables"
 ---
 
-# Question 1
+# Part 1
 > Consider the function 
 > $$f(x,y) = e^{-y}\sin(x)$$
 > Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
@@ -75,7 +75,7 @@ plt.show() # Show the plot in the jupyter notebook
 > Consider the function  $$f(x,y) = e^{-y}\sin(x)$$ Plot  $$f(\pi/2, y)$$ vs. $$y$$ for $$y$$ in the interval $$(-3, 3)$$
 {: .challenge}
 
-# Question 2
+# Part 2
 > Consider the function 
 > $$f(x,y) = \int_{0}^{2 \pi} \frac{\sin(\theta) \cdot (x-\cos(\theta))}{((x-\cos(\theta))^2+(y-\sin(\theta))^2)^{3/2}} d\theta $$
 > 1. Write a program to find $$f(x,y)$$ for arbitrary values of $$x$$ and $$y$$
@@ -144,7 +144,7 @@ plt.grid()
 > Plot $$f(1/2,y)$$ vs. $$y$$ for $$y$$ in the interval $$(-2, 2)$$
 {: .challenge}
 
-# Question 3
+# Part 3
 > Consider the formula for the magnitude of the electric field from a point charge at the origin:
 > $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} $$
 > Plot the magnitude of the electric field as a function of $$x$$ in the range $$(-2R, 2R)$$ when $$y=R$$ and $$z=0$$.
