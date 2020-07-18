@@ -19,7 +19,9 @@ Throughout your studies in physics, many special functions will be encountered. 
 
 
 > Recall from PHYS 215 that wavefunction for the harmonic oscillator can be written as 
+
 > $$\psi_n(x) = \left(\frac{m\omega}{\pi \hbar}\right)^{1/4}\frac{1}{\sqrt{2^nn!}}H_n(\xi)e^{-\xi^2/2} $$
+
 > where $$\xi=\sqrt{m\omega/\hbar} x$$ and $$H_n$$ are the Hermite polynomials. Plot $$\psi_0$$, $$\psi_1$$, $$\psi_2$$, $$\psi_4$$, and $$\psi_8$$ as a function of $$\xi$$.
 
 First we import the hermite polynomials from scipy
