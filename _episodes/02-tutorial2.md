@@ -19,7 +19,7 @@ $$\vec{r} = (R\cos(2\theta), R\sin(2\theta), R\theta)$$
 
 for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
 
-## Part 1
+# Part 1
 > Plot the potential along the $$x$$ axis for $$x:2R \to 10R$$.
 
 It can be shown that
@@ -60,7 +60,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-# Question 2
+# Part 2
 > For the region $$x:100R \to 110R$$, fit the potential to the curve $$f(x;a)=\frac{a}{x/R}$$. What value of $$a$$ do you get? Then, using this value of $$a$$, plot $$V(x\hat{x})$$ and $$f(x;a)$$ on the same plot in 
 > * the region $$x:2R \to 5R$$.
 > * the region $$x:200R \to 210R$$
