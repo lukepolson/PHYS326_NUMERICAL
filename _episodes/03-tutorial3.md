@@ -115,7 +115,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-> Now consider two points $\vec{r}_1 = (a,a/2,0)$ and $\vec{r}_2 = (a,a/3,0)$. Plot $V_n$ vs. $n$ with the bars next to eachother.
+> Now consider two points $$\vec{r}_1 = (a,a/2,0)$$ and $$\vec{r}_2 = (a,a/3,0)$$. Plot $$V_n$$ vs. $$n$4 with the bars next to eachother.
 
 This is a little finicky in python. First lets define out arrays
 
