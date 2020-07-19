@@ -94,7 +94,7 @@ for many iterations, it is guarenteed $$V(x,y)$$ will eventually converge to the
 >
 > $$\frac{V(x_{i+1}, y_j) - 2V(x_i, y_j) + V(x_{i-1}, y_j)}{(\Delta x)^2} + \frac{V(x_i, y_{j+1}) - 2V(x_i, y_j) + V(x_i, y_{j-1})}{(\delta y)^2} = 0 $$
 >
-> Noting that $$ \Delta x = \Delta y$$ in our array, we can solve for $$V_{i,j}$$ yielding
+> Noting that $$ \Delta x = \Delta y$$ in our array, we can solve for $$V(x_i, y_j)$$ yielding
 >
 > $$V(x_i, y_j) = \frac{1}{4}(V(x_{i+1}, y_{j}) + V(x_{i-1}, y_{j}) + V(x_{i}, y_{j+1}) + V(x_{i}, y_{j-1}))$$
 >
