@@ -15,10 +15,10 @@ keypoints:
 
 > Consider the boundary conditions of the following 2D potential $$V(x,y)$$ in the square $$x \in [-a, a]$$ and $$y \in [-a, a]$$
 > 
-> * $$V(x, a) = V_0 \cos (\frac{\pi}{2}\frac{x}{a})$$
-> * $$V(x, -a) = V_0 (\frac{x}{a})^4$$
+> * $$V(x, a) = V_0 \cos \left(\frac{\pi}{2}\frac{x}{a} \right)$$
+> * $$V(x, -a) = V_0 \left(\frac{x}{a}\right)^4$$
 > * $$V(a, y) = V_0 \frac{1}{e^{-1}-e}(e^{x/a}-e)$$
-> * $$V(-a, y) = \frac{1}{2}((x/a)^2+(x/a))$$
+> * $$V(-a, y) = V_0 \frac{1}{2}((x/a)^2+(x/a))$$
 > 
 
 # Part 1
@@ -121,9 +121,11 @@ for n in range(n_iter):
 
 In the code above, the first loop is the number of iterations of $$V(x_i, y_j) \to \frac{1}{4}(V(x_{i+1}, y_{j}) + V(x_{i-1}, y_{j}) + V(x_{i}, y_{j+1}) + V(x_{i}, y_{j-1}))$$, the second loop loops through all the $$x$$ values of the array, and the third loop loops through all the $$y$$ values of the array. You should notice that this code takes a considerable amount of time to run (approx 1 to 5 minutes). 
 
-So why did I say this method was "awful"? In python it is undesirable to use forloops to iterate over numpy arrays when modifying them. This is why there are techniques like element-wise functions implemented for numpy arrays. (For example, if `a` is numpy arrays then `a**2` produces a numpy array where all the elements are squared- in any other programming language you would need to use a forloop to do this). There is no simple numpy function for accomplishing this in our case. However, there is something we can do...
+So why did I say this method was "awful"? In python it is undesirable to use forloops to iterate over numpy arrays when modifying them. This is why there are techniques like element-wise functions implemented for numpy arrays. (For example, if `a` is numpy arrays then `a**2` produces a numpy array where all the elements are squared- in any other programming language you would need to use a forloop to do this). 
 
-The second method uses a python package called (numba)[http://numba.pydata.org/]. numba takes python code that contains numpy arrays and forloops and converts it to optimized C code. The trade-off is that you need to be very careful when writing code. This problem can be solved using numba as follows:
+There is no simple numpy function for implementing the implicit difference method. However, there is something we can do...
+
+The second method uses a python package called [numba](http://numba.pydata.org/). numba takes python code that contains numpy arrays and forloops and converts it to optimized C code. The trade-off is that you need to be very careful when writing code. This problem can be solved using numba as follows:
 
 First we create a special numba function.
 ~~~
