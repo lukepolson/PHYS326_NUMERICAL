@@ -108,6 +108,8 @@ for many iterations, it is guarenteed $$V(x,y)$$ will eventually converge to the
 
 Okay, lets now implement this recursive algorithm. There are two ways to do this in python: the first way is awful and should be avoided at all costs; the second way is beautiful and should make you very happy. We will begin with the first way.
 
+### Method 1
+
 The first way uses a triple forloop. It can be implemented as follows:
 
 ~~~
@@ -124,6 +126,8 @@ In the code above, the first loop is the number of iterations of $$V(x_i, y_j) \
 So why did I say this method was "awful"? In python it is undesirable to use forloops to iterate over numpy arrays when modifying them. This is why there are techniques like element-wise functions implemented for numpy arrays. (For example, if `a` is numpy arrays then `a**2` produces a numpy array where all the elements are squared- in any other programming language you would need to use a forloop to do this). 
 
 There is no simple numpy function for implementing the implicit difference method. However, there is something we can do...
+
+### Method 2
 
 The second method uses a python package called [numba](http://numba.pydata.org/). numba takes python code that contains numpy arrays and forloops and converts it to optimized C code. The trade-off is that you need to be very careful when writing code. This problem can be solved using numba as follows:
 
