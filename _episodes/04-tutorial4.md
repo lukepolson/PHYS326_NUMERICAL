@@ -162,3 +162,53 @@ potential = compute_potential(potential, n_iter=10000)
 
 Note that this is **much** faster than the first method using forloops in python.
 
+# Part 2
+
+Now we will create an animated gif of a 3D plot that shows the potential in the region $$x \in [-a, a]$$ and $$y \in [-a, a]$$. Our gif will be of a surface plot the rotates in the $$\phi$$ direction as time progresses. Creating animations in python using matplotlib is not a difficult task. First we define two functions: `init` and `anim`.
+
+~~~
+def init(fig, ax):
+    # Plot the surface.
+    ax.plot_surface(xv, yv, potential, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
+    ax.set_xlabel('$x/a$')
+    ax.set_ylabel('$y/a$')
+    ax.set_zlabel('$V/V_0$')
+    return fig,
+
+def animate(fig, ax, i):
+    ax.view_init(elev=10, azim=i*2)
+    return fig,
+~~~
+{: .language-python}
+
+* The function `init` takes in the figure `fig` (the object that all the axes are drawn on- recall one figure can have more than one axis) and a corresponding axis `ax`. The purpose of the `init` function is that it creates the initial frame for the animation. It decorates the figure and axis with all the features that don't change throughout the animation. In our case, the surface plot doesn't change throughout the animation, so we plot it and add all the required labels. The `init` function is required to return the figure `fig`.
+
+* The function `animate` takes in `fig` and `ax` as well. It also, however, takes in an additional argument `i` which is the current frame of the animation. The "art" involved in making animations is relates the frame `i` to the changing portion of the animation. For example, if one is plotting an animation of $$\cos(kx-\omega t)$$ where the function should move on the axis, one might set $$t=i$$ so the function shifts a little bit each frame (if it shifts too much, maybe $$t=\frac{1}{100}i$$). The code in the animate function would then be `ax.plot(np.cos(k*x-omega*i))`. In our case we need to rotate our 3d plot. I have found that setting the azimuthal angle `azim` equal to `2*i` (i.e. two times the frame rate) makes it so the rotation is not too fast. You can play around with this.
+
+Now we need to feed in these two functions into a special matplotlib function which creates and saves the animation. I will also create an axes and the figure.
+
+~~~
+fig = plt.figure()
+ax = Axes3D(fig)
+ani = animation.FuncAnimation(fig, animate, init_func=init,
+                               frames=180, interval=50)
+ani.save('rotate_azimuth_angle_3d_surf.gif',writer='imagemagick',fps=20)
+~~~
+{: .language-python}
+
+Lets examine all the parameters passed to the animate function
+
+* `fig`: The created figure which will be used in the animation function
+* `animate`: The animate function which we previously created
+* `init`: The initial function which we previously created
+* `frames`: The number of frames to use in the animation (180 frames where `azim=2*i` means the gif will contain a full 360 degrees rotation)
+* `inteveral`: The time between frames in milliseconds. Note that **this does not define the frame rate**: it is slightly more complicated but I find 50 is a good value.
+
+It's not until we save the animation that we actually specify the frame rate. You'll see this above in the `ani.save`. All you need to worry about in that line is that we named the gif, and we specified the frame rate at 20 frames per second. You have now created a gif using python!
+
+
+
+
+
+
