@@ -168,7 +168,7 @@ Note that this is **much** faster than the first method using forloops in python
 Now we will create an animated gif of a 3D plot that shows the potential in the region $$x \in [-a, a]$$ and $$y \in [-a, a]$$. Our gif will be of a surface plot the rotates in the $$\phi$$ direction as time progresses. Creating animations in python using matplotlib is not a difficult task. First we define two functions: `init` and `anim`.
 
 ~~~
-def init(fig, ax):
+def init():
     # Plot the surface.
     ax.plot_surface(xv, yv, potential, cmap=cm.coolwarm,
                        linewidth=0, antialiased=False)
@@ -177,15 +177,15 @@ def init(fig, ax):
     ax.set_zlabel('$V/V_0$')
     return fig,
 
-def animate(fig, ax, i):
-    ax.view_init(elev=10, azim=i*2)
+def animate(i):
+    ax.view_init(elev=10, azim=2*i)
     return fig,
 ~~~
 {: .language-python}
 
-* The function `init` takes in the figure `fig` (the object that all the axes are drawn on- recall one figure can have more than one axis) and a corresponding axis `ax`. The purpose of the `init` function is that it creates the initial frame for the animation. It decorates the figure and axis with all the features that don't change throughout the animation. In our case, the surface plot doesn't change throughout the animation, so we plot it and add all the required labels. The `init` function is required to return the figure `fig`.
+* The function `init` sets up our figure and axis with everything we want to be present in the animation in the first frame. Why does such an animation exist? Well if our gif is of a rotating surface, we don't want to have to redraw it in matplotlib every single frame, so it is easier to do this once in an `init` function.
 
-* The function `animate` takes in `fig` and `ax` as well. It also, however, takes in an additional argument `i` which is the current frame of the animation. The "art" involved in making animations is relates the frame `i` to the changing portion of the animation. For example, if one is plotting an animation of $$\cos(kx-\omega t)$$ where the function should move on the axis, one might set $$t=i$$ so the function shifts a little bit each frame (if it shifts too much, maybe $$t=\frac{1}{100}i$$). The code in the animate function would then be `ax.plot(np.cos(k*x-omega*i))`. In our case we need to rotate our 3d plot. I have found that setting the azimuthal angle `azim` equal to `2*i` (i.e. two times the frame rate) makes it so the rotation is not too fast. You can play around with this.
+* The function `animate` takes a argument `i` which is the current frame of the animation. The "art" involved in making animations is relates the frame `i` to the changing portion of the animation. For example, if one is plotting an animation of $$\cos(kx-\omega t)$$ where the function should move on the axis, one might set $$t=i$$ so the function shifts a little bit each frame (if it shifts too much, maybe $$t=\frac{1}{100}i$$). The code in the animate function would then be `ax.plot(np.cos(k*x-omega*i))`. In our case we need to rotate our 3d plot. I have found that setting the azimuthal angle `azim` equal to `2*i` (i.e. two times the current frame) makes it so the rotation is not too fast. You can play around with this.
 
 Now we need to feed in these two functions into a special matplotlib function which creates and saves the animation. I will also create an axes and the figure.
 
