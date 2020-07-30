@@ -66,9 +66,10 @@ fig.tight_layout()
 ~~~
 {: .language-python}
 
-We eventually need to solve for the potential **everywhere** in the square. To do this let's first create a $$100 \times 100$$ 2D array that will store all the values of the potential.
+We eventually need to solve for the potential **everywhere** in the square. To do this let's first create a $$100 \times 100$$ 2D array that will store all the values of the potential. We also create a meshgrid that corresponds to the $$(x,y)$$ coordinates of the potential.
 
 ~~~
+xv, yv = np.meshgrid(edge, edge)
 potential = np.zeros((100,100))
 ~~~
 {: .language-python}
