@@ -36,7 +36,7 @@ lower_x = 0.5 * (edge**2-edge)
 ~~~
 {: .language-python}
 
-Note that edge corresponds to $$x/a$$ for `upper_y` and `lower_y`, and corresponds to $$y/a$$ for `upper_x` and `lower_x`. Lets plot the potential at each edge of the square. Here I create a figure that consists of a $$2 \times 2$$ grid of axes. We plot each array on a different axis.
+Note that `edge` corresponds to $$x/a$$ for `upper_y` and `lower_y`, and corresponds to $$y/a$$ for `upper_x` and `lower_x`. Lets plot the potential at each edge of the square. Here I create a figure that consists of a $$2 \times 2$$ grid of axes. We plot each array on a different axis.
 
 
 ~~~
