@@ -17,8 +17,8 @@ keypoints:
 > 
 > * $$V(x, a) = V_0 \cos \left(\frac{\pi}{2}\frac{x}{a} \right)$$
 > * $$V(x, -a) = V_0 \left(\frac{x}{a}\right)^4$$
-> * $$V(a, y) = V_0 \frac{1}{e^{-1}-e}(e^{x/a}-e)$$
-> * $$V(-a, y) = V_0 \frac{1}{2}((x/a)^2+(x/a))$$
+> * $$V(a, y) = V_0 \frac{1}{e^{-1}-e}(e^{y/a}-e)$$
+> * $$V(-a, y) = V_0 \frac{1}{2}((y/a)^2+(y/a))$$
 > 
 
 # Part 1
