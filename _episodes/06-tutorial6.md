@@ -12,7 +12,7 @@ keypoints:
 - "matplotlib has many different plotting capablities"
 ---
 
-> Consider a current loop with current $$I$$ given by $$z=0$$, $$x^2 + y^2 = a^2$$ travelling in the standard counter-clockwise position in the $$xy$$ plane. 
+> Consider a current loop with current $$I$$ located at $$z=0$$, $$x^2 + y^2 = a^2$$ with current travelling in a counter-clockwise direction in the $$xy$$ plane. 
 
 # Part 1
 > Plot $$B_x$$ and $$B_y$$ on the planes $$z=-a/2$$, $$z=-a/4$$, $$z=a/4$$ and $$z=a/2$$. Use a quiver plot. On the same axes, plot a heat plot of $$B_z$$. Based on the plot, are the results consistent with Griffiths Figure 5.55 for a "Physical" dipole?
