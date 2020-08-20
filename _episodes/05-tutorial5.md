@@ -13,7 +13,7 @@ keypoints:
 > A Li atom is placed in a potential $$V_{\text{ext}}(\vec{r}) = V_0 \left(\frac{z}{a}\right)^2 $$ at a position $$\vec{r} =  (a/2, a/2, a)$$. 
 
 # Part 1
-> Plot a 2D color graph of the magntiude of the potential in the $$xy$$ plane for $$x \in [-a, a]$$ and $$y \in [-a, a]$$
+> Plot a contour plot of the potential in the $$xy$$ plane for $$x \in [-a, a]$$ and $$y \in [-a, a]$$
 
 The electric field is given by $$\vec{E} = -\nabla V_{\text{ext}} = -2V_0 \frac{z}{a^2}$$ and thus at the location of the Li atom 
 
@@ -38,7 +38,7 @@ First we define our potential as a function of $$x/a$$ and $$y/a$$
 alph = 24.3
 
 def potential(x_a, y_a):
-    return np.abs(-alph * 1 / ((x_a-0.5)**2+(y_a-0.5)**2+1)**(3/2))
+    return -alph * 1 / ((x_a-0.5)**2+(y_a-0.5)**2+1)**(3/2)
 ~~~
 {: .language-python}
 
