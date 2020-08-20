@@ -155,5 +155,3 @@ ax.set_title('Magnetic Field Lines')
 {: .language-python}
 
 Note that we also add two additional blue dots that are located at the position where the ring intersects the plane $$y=0$$.
-
-fill in answer
