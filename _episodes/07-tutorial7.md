@@ -20,7 +20,7 @@ so the order of buisness will be finding the $$z$$ component of the magnetic fie
 
 
 # Part 1
-> Find $$B_z$$ in the plane $$z=0$$. When the volume of the magnetized object is not intersection the plane $$z=0$$, you can write this as one expression, but when the the magnetized object is intersecting the plane $$z=0$$, the magnetic field will need to be split into two seperate cases. Find all the times when the magnetized object is intersecting the plane $$z=0$$. For a given time $$t$$, how much area of the magnetized object is in the plane $$z=0$$?
+> Find $$B_z$$ in the plane $$z=0$$. When the volume of the magnetized object is not intersection the plane $$z=0$$, you can write this as one expression, but when the the magnetized object is intersecting the plane $$z=0$$, the magnetic field will need to be split into two seperate cases. Find all the times when the magnetized object is intersecting the plane $$z=0$$. For a given time $$t$$, how much area of the magnetized object is in the plane $$z=0$$? Then find the magnetic flux in the loop as a function of $$t$$.
 
 The first thing to note is that there are **a lot** of undefined variables. In the end, we want everything in terms of dimensionless quantities (including the EMF); to do so, we will have to use many tricks.
 
@@ -43,9 +43,25 @@ $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{outside sphere}} = \left(\frac{-3(h/R)^2
 
 meanwhile, with $$a = nR$$ we get 
 
-$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3} $$
+$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}$$
 
-Now we need to determine the times when the sphere intesects the plane $$z=0$$. First off, since time $$t$$ has dimensions, I am going to define a dimensionless constant that will help us later. Let $$T \equiv \frac{v}{R}t$$. Thus, the time in this problem is defined in terms of the radius of the ring and the speed at which the magnetic sphere is moving at. Now for the problem at hand. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$|T-2| \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. 
+Now we need to determine the times when the sphere intesects the plane $$z=0$$. First off, since time $$t$$ has dimensions, I am going to define a dimensionless constant that will help us later. Let $$T \equiv \frac{v}{R}t$$. Thus, the time in this problem is defined in terms of the radius of the ring and the speed at which the magnetic sphere is moving at. Now for the problem at hand. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$\mid T-2\right \mid \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$.\\
+
+## Flux When Sphere Intersects z=0
+
+For these special times we thus have
+
+$$\Phi = \oint_{r<r_i} B_{z}^{\text{inside sphere}} r dr d\phi +  \oint_{r>r_i} B_{z}^{\text{outside sphere}} r dr d\phi$$
+
+Substituting everything in, trivially integrating over $$\phi$$, and writing in terms of dimensionless quantities we have
+
+$$ \frac{4 \pi R}{\mu_0 m} \Phi = \pi\left(n^2-\left(\frac{h}{R}\right)^2 \right)\left(\frac{-2}{n^3}\right) + 2 \pi \int_{\sqrt{n^2-(h/R)^2}}^{1} \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right) \frac{r}{R} d\left(\frac{r}{R}\right) $$
+
+## Flux When Sphere Does Not Intersect z=0
+
+Otherwise we get the simpler case of
+
+$$ \frac{4 \pi R}{\mu_0 m} \Phi = 2 \pi \int_{0}^{1} \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right) \frac{r}{R} d\left(\frac{r}{R}\right) $$
 
 
 
