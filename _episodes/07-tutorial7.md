@@ -26,8 +26,8 @@ The first thing to note is that there are **a lot** of undefined variables. In t
 
 From Griffith's Example 6.1, we know the the magnetic field of a magnetizied sphere at the origin is given be
 
-$$\vec{B} = \begin{cases} \frac{\mu_0}{4\pi} \frac{1}{r^3} \left(3(\vec{m} \cdot \hat{r})\hat{r} - \vec{m} \right) & \text{inside sphere}\\
-                          \frac{2}{3} \mu_0 \left(\frac{2}{3} \mu_0 \vec{M} \right) & \text{outside sphere}\end{cases}$$
+$$\vec{B} = \begin{cases} \frac{\mu_0}{4\pi} \frac{1}{r^3} \left(3(\vec{m} \cdot \hat{r})\hat{r} - \vec{m} \right) & \text{outside sphere}\\
+                          \frac{2}{3} \mu_0 \left(\frac{2}{3} \mu_0 \vec{M} \right) & \text{inside sphere}\end{cases}$$
                           
 where $$\vec{m} = \frac{4}{3} \pi a^3 \vec{M}$$. For this problem, we will write everything in terms of $$m$$: the effective total dipole moment of the sphere.
 
