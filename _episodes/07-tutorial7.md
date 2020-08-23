@@ -26,7 +26,7 @@ The first thing to note is that there are **a lot** of undefined variables. In t
 
 From Griffith's Example 6.1, we know the the magnetic field of a magnetizied sphere at the origin is given be
 
-$$\vec{B} = \begin{cases} \scriptr & d\\
+$$\vec{B} = \begin{cases} \mathcalligra{r} & d\\
                           c & d\end{cases}$$
 
 # Part 2
