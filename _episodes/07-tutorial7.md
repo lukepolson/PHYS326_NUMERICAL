@@ -35,15 +35,17 @@ Note that in this problem the sphere is not always at the origin and thus we nee
 
 So what is $$h(t)$$? Since the dipole moves at constant velocity $$-v\hat{z}$$ and starts at $$z=2R$$ it should be obvious that $$h(t) = 2R-vt$$. We can now substitute everything in and get
 
-$$B_z^{\text{outside sphere}} = \frac{\mu_0 m }{4 \pi}\left(\frac{-3h(t)^2}{(r^2+h(t)^2)^{5/2}} + \frac{1}{(r^2+h(t)^2)^{3/2}} \right)
+$$B_z^{\text{outside sphere}} = \frac{\mu_0 m }{4 \pi}\left(\frac{-3h(t)^2}{(r^2+h(t)^2)^{5/2}} + \frac{1}{(r^2+h(t)^2)^{3/2}} \right)$$
 
 writing this in terms of dimensionless quantities yields
 
-$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{outside sphere}} = \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right)
+$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{outside sphere}} = \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right) $$
 
 meanwhile, with $$a = nR$$ we get 
 
-$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}
+$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3} $$
+
+Now we need to determine the times when the sphere intesects the plane $$z=0$$. First off, since time $$t$$ has dimensions, I am going to define a dimensionless constant that will help us later. Let $$T \equiv \frac{v}{R}t$$. Thus, the time in this problem is defined in terms of the radius of the ring and the speed at which the magnetic sphere is moving at. Now for the problem at hand. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$|T-2| \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. 
 
 
 
