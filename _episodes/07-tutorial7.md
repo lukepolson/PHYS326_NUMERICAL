@@ -22,6 +22,13 @@ so the order of buisness will be finding the $$z$$ component of the magnetic fie
 # Part 1
 > Find $$B_z$$ in the plane $$z=0$$. When the volume of the magnetized object is not intersection the plane $$z=0$$, you can write this as one expression, but when the the magnetized object is intersecting the plane $$z=0$$, the magnetic field will need to be split into two seperate cases. Find all the times when the magnetized object is intersecting the plane $$z=0$$. For a given time $$t$$, how much area of the magnetized object is in the plane $$z=0$$?
 
+The first thing to note is that there are **a lot** of undefined variables. In the end, we want everything in terms of dimensionless quantities (including the EMF); to do so, we will have to use many tricks.
+
+From Griffith's Example 6.1, we know the the magnetic field of a magnetizied sphere at the origin is given be
+
+$$\vec{B} = \begin{cases} a & d\\
+                          c & d\end{cases}$$
+
 # Part 2
 > Write a function that allows you to determine the magnetic flux through the current loop $$\Phi$$ at some time $$t$$ and for some proportionality constant $$n$$. You will need to be extra careful; remember that at certain times the magnetic sphere intersects the plane $$z=0$$ and thus the magnetic field is given by two different expressions depending on whether or not you are inside the magnet or not.
 
