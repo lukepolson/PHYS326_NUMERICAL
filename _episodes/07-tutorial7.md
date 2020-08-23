@@ -26,8 +26,26 @@ The first thing to note is that there are **a lot** of undefined variables. In t
 
 From Griffith's Example 6.1, we know the the magnetic field of a magnetizied sphere at the origin is given be
 
-$$\vec{B} = \begin{cases} \mathbb{r} & d\\
-                          c & d\end{cases}$$
+$$\vec{B} = \begin{cases} \frac{\mu_0}{4\pi} \frac{1}{r^3} \left(3(\vec{m} \cdot \hat{r})\hat{r} - \vec{m} \right) & \text{inside sphere}\\
+                          \frac{2}{3} \mu_0 \left(\frac{2}{3} \mu_0 \vec{M} \right) & \text{outside sphere}\end{cases}$$
+                          
+where $$\vec{m} = \frac{4}{3} \pi a^3 \vec{M}$$. For this problem, we will write everything in terms of $$m$$: the effective total dipole moment of the sphere.
+
+Note that in this problem the sphere is not always at the origin and thus we need to replace $$\vec{r} \to \vec{r}-\vec{r}'$$. First lets examine what $$\vec{r}$$ and $$\vec{r}'$$ should be. Note that we will eventually be integrating the magnetic field over a circle of radius $$R$$ on the plane $$z=0$$; it thus makes sense to choose $$\vec{r} = (r\cos\phi, r\sin\phi, 0)$$. Meanwhile, the moving dipole gives off the same field as an ideal magnetic dipole at the center of the sphere. Thus we should choose $$\vec{r}' = (0, 0, h(t))$$ where $$h(t)$$ is the current height of the center of the sphere above the current loop. 
+
+So what is $$h(t)$$? Since the dipole moves at constant velocity $$-v\hat{z}$$ and starts at $$z=2R$$ it should be obvious that $$h(t) = 2R-vt$$. We can now substitute everything in and get
+
+$$B_z^{\text{outside sphere}} = \frac{\mu_0 m }{4 \pi}\left(\frac{-3h(t)^2}{(r^2+h(t)^2)^{5/2}} + \frac{1}{(r^2+h(t)^2)^{3/2}} \right)
+
+writing this in terms of dimensionless quantities yields
+
+$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{outside sphere}} = \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right)
+
+meanwhile, with $$a = nR$$ we get 
+
+$$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}
+
+
 
 # Part 2
 > Write a function that allows you to determine the magnetic flux through the current loop $$\Phi$$ at some time $$t$$ and for some proportionality constant $$n$$. You will need to be extra careful; remember that at certain times the magnetic sphere intersects the plane $$z=0$$ and thus the magnetic field is given by two different expressions depending on whether or not you are inside the magnet or not.
