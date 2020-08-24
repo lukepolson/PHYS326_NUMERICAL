@@ -77,7 +77,7 @@ from scipy.integrate import quad
 ~~~
 {: .language-python}
 
-Now we define $h/R$, the integrand specified in the two integrals above, and the flux $$\frac{4 \pi R}{\mu_0 m} \Phi$$ as a function of $$T$$ (and $$n$$):
+Now we define $$h/R$$, the integrand specified in the two integrals above, and the flux $$\frac{4 \pi R}{\mu_0 m} \Phi$$ as a function of $$T$$ (and $$n$$):
 
 ~~~
 def h_R(T):
