@@ -50,7 +50,7 @@ $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}$$
 Now we need to determine the times when the sphere intesects the plane $$z=0$$. First off, since time $$t$$ has dimensions, I am going to define a dimensionless constant that will help us later. Let $$T \equiv \frac{v}{R}t$$. Thus, the time in this problem is defined in terms of the radius of the ring and the speed at which the magnetic sphere is moving at. Now for the problem at hand. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. See below
 
 
-![Intersection of sphere with plane z=0](../fig/tut7pic2.PNG){:width="50%"}
+![Intersection of sphere with plane z](../fig/tut7pic2.PNG){:width="50%"}
 
 
 ## Flux When Sphere Intersects z=0
@@ -101,7 +101,7 @@ def flux(n, T):
 ~~~
 {: .language-python}
 
-From this we con obtain arrays of the flux vs. $$T$$ from $$T:0 \to 4n$$ (i.e. center of sphere goes from $$z=-2R$$ to $$z=2R$$) for a few different values of $$n$$:
+From this we can obtain arrays of the flux vs. $$T$$ from $$T:0 \to 4n$$ (i.e. center of sphere goes from $$z=-2R$$ to $$z=2R$$) for a few different values of $$n$$:
 
 ~~~
 T = np.arange(0,4,0.01)
