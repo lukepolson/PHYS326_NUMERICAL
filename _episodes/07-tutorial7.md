@@ -66,7 +66,81 @@ $$ \frac{4 \pi R}{\mu_0 m} \Phi = 2 \pi \int_{0}^{1} \left(\frac{-3(h/R)^2}{((r/
 
 
 # Part 2
-> Write a function that allows you to determine the magnetic flux through the current loop $$\Phi$$ at some time $$t$$ and for some proportionality constant $$n$$. You will need to be extra careful; remember that at certain times the magnetic sphere intersects the plane $$z=0$$ and thus the magnetic field is given by two different expressions depending on whether or not you are inside the magnet or not.
+> Write a function that allows you to determine the magnetic flux through the current loop $$\Phi$$ at some time $$t$$ and for some proportionality constant $$n$$. You will need to be extra careful; remember that at certain times the magnetic sphere intersects the plane $$z=0$$ and thus the magnetic field is given by two different expressions depending on whether or not you are inside the magnet or not. Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a few differnt values on $$n$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
 
-# Part 3
-> Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a value of $$n=0.1$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
+First we import the packages we need
+
+~~~
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+~~~
+{: .language-python}
+
+Now we define $h/R$, the integrand specified in the two integrals above, and the flux $$\frac{4 \pi R}{\mu_0 m} \Phi$$ as a function of $$T$$ (and $$n$$):
+
+~~~
+def h_R(T):
+    return 2-T
+
+def integrand(r_R, n, T):
+    return (-3*h_R(T)**2 / (r_R**2+h_R(T)**2)**(5/2) + 1/(r_R**2+h_R(T)**2)**(3/2) ) * r_R
+
+def flux(n, T):
+    if np.abs(h_R(T)) < n:
+        return np.pi * (n**2-h_R(T)**2) * (-2/n**3) \
+                + 2*np.pi*quad(integrand, np.sqrt(n**2-h_R(T)**2), 1, args=(n, T))[0]
+    else:
+        return 2*np.pi*quad(integrand, 0, 1, args=(n, T))[0]
+~~~
+{: .language-python}
+
+From this we con obtain arrays of the flux vs. $$T$$ from $$T:0 \to 4n$$ (i.e. center of sphere goes from $$z=-2R$$ to $$z=2R$$) for a few different values of $$n$$:
+
+~~~
+T = np.arange(0,4,0.01)
+fluxs1 = np.vectorize(flux)(0.5, T)
+fluxs2 =  np.vectorize(flux)(0.001, T)
+~~~
+{: .language-python}
+
+Lets plot:
+
+~~~
+plt.plot(T, fluxs1)
+plt.plot(T, fluxs2)
+plt.xlabel(r'$\frac{v}{R}t$', fontsize=14)
+plt.ylabel(r'$\frac{4 \pi R}{\mu_0 m} \Phi$', fontsize=14)
+plt.grid()
+~~~
+{: .language-python}
+
+Interestingly, the flux at any time does not depend on $$n$$.
+
+Now we need to find the induced emf $$\varepsilon$$. Note that our array above is of $$\Phi(T)$$ so we can only directly take $$d\Phi/dT$$ and not $$d\Hpi/dt$$ like we need to. Since
+
+$$\varepsilon = -\frac{d\Phi}{dt} = -\frac{v}{R}\frac{d\Phi}{d(v/R \cdot t)} = -\frac{v}{R}\frac{d\Phi}{dT}$$
+
+we get
+
+$$ \frac{4 \pi R^2}{\mu_0 m v} \varepsilon = -\frac{d}{dT} \left(\frac{4 \pi R}{\mu_0 m} \Phi \right) $$
+
+note that we have access to everything on the right. We can take the derivative with respect to $$T$$ because this is how our array is constructed. Everything inside the brackets on the RHS is the dimensionsless quantity we have stored in our array. We thus take the derivative...
+
+~~~
+EMF = -np.gradient(fluxs1)
+~~~
+{: .language-python}
+
+and then plot using the correct labels
+
+~~~
+plt.plot(T, EMF)
+plt.xlabel(r'$\frac{v}{R}t$', fontsize=14)
+plt.ylabel(r'$\frac{4 \pi R^2}{\mu_0 m v}\varepsilon$', fontsize=14)
+plt.title('Induced EMF in Circular Wire')
+plt.grid()
+~~~
+{: .language-python}
+
+Lets compare these to the plots in Griffiths. Firstly note that our flux plot does not flatten out like Griffiths; this is due to the fact that the griffiths example is with a cylindrical magnet and not a spherical one. This also explains the difference in the EMF plot which is simply the derivative of the flux plot.
