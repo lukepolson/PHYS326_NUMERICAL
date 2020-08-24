@@ -117,7 +117,7 @@ plt.grid()
 
 Interestingly, the flux at any time does not depend on $$n$$.
 
-Now we need to find the induced emf $$\varepsilon$$. Note that our array above is of $$\Phi(T)$$ so we can only directly take $$d\Phi/dT$$ and not $$d\Hpi/dt$$ like we need to. Since
+Now we need to find the induced emf $$\varepsilon$$. Note that our array above is of $$\Phi(T)$$ so we can only directly take $$d\Phi/dT$$ and not $$d\Phi/dt$$ like we need to. Since
 
 $$\varepsilon = -\frac{d\Phi}{dt} = -\frac{v}{R}\frac{d\Phi}{d(v/R \cdot t)} = -\frac{v}{R}\frac{d\Phi}{dT}$$
 
