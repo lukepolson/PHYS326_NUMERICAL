@@ -16,7 +16,7 @@ keypoints:
 
 Before doing anything, I recommend making a careful drawing of the problem, highlighting the current loop, the magnetized object, and the direction in which it moves. It is worth noting that
 
-$$\varepsilon = -\frac{d\Phi}{dt} = -\frac{d}{dt} \oint \vec{B} \cdot d\vec{A} = \oint B_z dA $$
+$$\varepsilon = -\frac{d\Phi}{dt} = -\frac{d}{dt} \oint \vec{B} \cdot d\vec{A} = -\frac{d}{dt}\oint B_z dA $$
 
 so the order of buisness will be finding the $$z$$ component of the magnetic field due to the magnetized sphere.
 
