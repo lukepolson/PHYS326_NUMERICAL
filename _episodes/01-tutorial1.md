@@ -108,7 +108,7 @@ Now that we know how to integrate, we can define our function from the beginning
 
 ~~~
 def func(x,y):
-    return quad(integrand, 0, 2*np.pi, args=(x,y))[0]
+    return quad(my_integrand, 0, 2*np.pi, args=(x,y))[0]
 ~~~
 {: .language-python}
 
