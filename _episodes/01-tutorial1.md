@@ -145,11 +145,33 @@ plt.grid()
 {: .challenge}
 
 # Part 3
+>In the following problem, assume that 
+> * $$x$$ and $$y$$ have dimensions of length; reference length $$R$$ is known.   
+> * $$q$$ and $$p$$ have dimensions of charge; reference charge $$Q$$ is known.
+> * $$\chi$$ is some universal constant with dimensions of color (like the speed of light, planck's constant, or Boltzmann constant - only this is made up).
+> Rearrange the equation $$F= \chi \frac{q^2+3p^2}{x^5+5y^5}$$ so that each side is dimensionless and written in terms of $$x/R$$, $$y/R$$, $$q/Q$$, and $$p/Q$$.
+
+The mathematical procedure discussed here will be crucial for the remaining numerical problems in the course, and you will begin see it's importance in part 4 of the tutorial. Our first goal will be to write everything in terms of $$x/R$$, $$y/R$$, $$q/Q$$, and $$p/Q$$.  Note that we can multiply the numerator by $$Q^2/Q^2$$ and the denominator by $$R^2/R^2$$ to get
+
+$$F = \chi \frac{\frac{Q^2}{Q^2}(q^2+3p^2)}{\frac{R^5}{R^5}(x^5+5y^5)}$$
+
+so that
+
+$$F= \chi \frac{Q^2}{R^5}\frac{(q/Q)^2+3(p/Q)^2}{(x/R)^5+5(y/R)^5}$$
+
+Now we multiply to make each side dimensionless. This can be done by bringing the factor $$\chi \frac{Q^2}{R^5}$$ over to the LHS to get
+
+$$\left(\frac{R^5}{\chi Q^2}\right) F = \frac{(q/Q)^2+3(p/Q)^2}{(x/R)^5+5(y/R)^5}$$
+
+Why is it important to rewrite the equation in this form? When it comes to plotting various physical quantities, it is often useful to deal with dimensionless quantities. In otherwords, it is more convenient to plot $$$$\left(\frac{R^5}{\chi Q^2}\right) F$$ than just $$F$$. You will see this in the problem below...
+
+
+# Part 4
 > Consider the formula for the magnitude of the electric field from a point charge at the origin:
 > $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} $$
 > Plot the magnitude of the electric field as a function of $$x$$ in the range $$(-2R, 2R)$$ when $$y=R$$ and $$z=0$$.
 
-**The mathematical procedure discussed here is extremely important and will be crucial for the rest of the course, so pay attention carefully**. The main purpose of this question is for you to realize that there are undefined variables ($$q$$, $$R$$) and we are asked to plot the electric field without knowing what their values are. Noting that
+The main purpose of this question is for you to realize that there are undefined variables ($$q$$, $$R$$) and we are asked to plot the electric field without knowing what their values are. Noting that
 
 $$|\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{q}{x^2+y^2} = \frac{1}{4 \pi \epsilon_0 R^2} \frac{q}{(x/R)^2+(y/R)^2} $$
 
@@ -157,7 +179,7 @@ it *is possible* to plot
 
 $$\frac{4 \pi \epsilon_0 R^2}{q} |\vec{E}| = \frac{1}{(x/R)^2 + (y/R)^2}$$
 
-for $$(x/R)$$ in the range $$(-2, 2)$$ when $$y/R=1$$ instead. Even though the question says *plot the magnitude of the electric field* (which is technically $$ \lvert \vec{E} \rvert $$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 \lvert \vec{E} \rvert /q$$ the instead.
+for $$(x/R)$$ in the range $$(-2, 2)$$ when $$y/R=1$$ instead. Note that this form of the equation is identical to the form of the final equation in part 3 of the tutorial.  Even though the question says *plot the magnitude of the electric field* (which is technically $$ \lvert \vec{E} \rvert $$), this cannot be done numerically, so you'll have to plot $$4 \pi \epsilon_0 R^2 \lvert \vec{E} \rvert /q$$ the instead.
 
 ~~~
 def func(x_R, y_R):
