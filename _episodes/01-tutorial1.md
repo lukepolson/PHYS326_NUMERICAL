@@ -67,9 +67,12 @@ Now we will plot $$f(x,1)$$ vs. $$x$$ using `matplotlib.pyplot`. Since we import
 plt.plot(x, f) # Create a canvas and plot the data
 plt.xlabel('x', fontsize=16) # Add an x-label and specify the font size
 plt.ylabel('f(x,1)', fontsize=16) 
+plt.grid()
 plt.show() # Show the plot in the jupyter notebook
 ~~~
 {: .language-python}
+
+![pic1](../fig/tut1_plot1.png){:width="50%"}
 
 > ## Your turn
 > Consider the function  $$f(x,y) = e^{-y}\sin(x)$$ Plot  $$f(\pi/2, y)$$ vs. $$y$$ for $$y$$ in the interval $$(-3, 3)$$
@@ -134,8 +137,11 @@ plt.plot(x,f)
 plt.xlabel('x', fontsize=16)
 plt.ylabel('f(x, 1/2)', fontsize=16)
 plt.grid()
+plt.show()
 ~~~
 {: .language-python}
+
+![pic2](../fig/tut1_plot2.png){:width="50%"}
 
 > ## Your turn
 > Consider now the different function
@@ -203,9 +209,12 @@ Finally, we plot
 plt.plot(x_R, f)
 plt.xlabel('$x/R$', fontsize=16)
 plt.ylabel(r'$\frac{4 \pi \epsilon_0 R^2}{q}|\vec{E}|$', fontsize=16)
+plt.grid()
 plt.show()
 ~~~
 {: .language-python}
+
+![pic3](../fig/tut1_plot3.png){:width="50%"}
 
 
 
