@@ -165,7 +165,7 @@ Now we multiply to make each side dimensionless. This can be done by bringing th
 
 $$\left(\frac{R^5}{\chi Q^2}\right) F = \frac{(q/Q)^2+3(p/Q)^2}{(x/R)^5+5(y/R)^5}$$
 
-Why is it important to rewrite the equation in this form? When it comes to plotting various physical quantities, it is often useful to deal with dimensionless quantities. In otherwords, it is more convenient to plot $$$$\left(\frac{R^5}{\chi Q^2}\right) F$$ than just $$F$$. You will see this in the problem below...
+Why is it important to rewrite the equation in this form? When it comes to plotting various physical quantities, it is often useful to deal with dimensionless quantities. In otherwords, it is more convenient to plot $$\left(\frac{R^5}{\chi Q^2}\right) F$$ than just $$F$$. You will see this in the problem below...
 
 
 # Part 4
