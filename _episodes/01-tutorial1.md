@@ -149,7 +149,9 @@ plt.grid()
 > * $$x$$ and $$y$$ have dimensions of length; reference length $$R$$ is known.   
 > * $$q$$ and $$p$$ have dimensions of charge; reference charge $$Q$$ is known.
 > * $$\chi$$ is some universal constant with dimensions of color (like the speed of light, planck's constant, or Boltzmann constant - only this is made up).
-> Rearrange the equation $$F= \chi \frac{q^2+3p^2}{x^5+5y^5}$$ so that each side is dimensionless and written in terms of $$x/R$$, $$y/R$$, $$q/Q$$, and $$p/Q$$.
+> Rearrange the equation 
+> $$F= \chi \frac{q^2+3p^2}{x^5+5y^5}$$
+> so that each side is dimensionless and written in terms of $$x/R$$, $$y/R$$, $$q/Q$$, and $$p/Q$$.
 
 The mathematical procedure discussed here will be crucial for the remaining numerical problems in the course, and you will begin see it's importance in part 4 of the tutorial. Our first goal will be to write everything in terms of $$x/R$$, $$y/R$$, $$q/Q$$, and $$p/Q$$.  Note that we can multiply the numerator by $$Q^2/Q^2$$ and the denominator by $$R^2/R^2$$ to get
 
