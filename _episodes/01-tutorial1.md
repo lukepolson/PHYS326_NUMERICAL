@@ -20,7 +20,7 @@ keypoints:
 # Part 1
 > Consider the function 
 > $$f(x,y) = e^{-y}\sin(x)$$
-> Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$"
+> Plot $$f(x, 1)$$ vs. $$x$$ for $$x$$ in the interval $$(-4\pi, 4\pi)$$
 
 The key is to first define a python function which represents $$f(x,y)$$. We will need pythons numerical library and plotting library, so we import `numpy` and `matplotlib.pyplot`
 
