@@ -44,9 +44,9 @@ Note that I keep a factor of $$4 \pi \epsilon_0$$ together. Now we define the in
 
 ~~~
 def integrand(theta, x_R, y_R, z_R):
-    return 1/np.sqrt((x_R-np.cos(2*theta))**2+(y_R-np.sin(2*theta))**2+(z_R-theta)**2)
+    return 1/np.sqrt((x_R-np.cos(theta))**2+(y_R-np.sin(theta))**2+(z_R-theta)**2)
 def potential(x_R, y_R, z_R):
-    return quad(integrand, 0, 2*np.pi, args=(x_R, y_R, z_R))[0]
+    return 1/(4*np.pi) * quad(integrand, -2*np.pi, 2*np.pi, args=(x_R, y_R, z_R))[0]
 ~~~
 {: .language-python}
 
@@ -63,7 +63,7 @@ And now we can plot like we've done in tutorial 1.
 ~~~
 plt.plot(x_R, potentials)
 plt.xlabel('$x/R$', fontsize=14)
-plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.ylabel(r'$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
 plt.grid()
 plt.title('Potential from Charged Spring')
 plt.show()
@@ -108,7 +108,7 @@ Lets code up our curve_fit:
 
 ~~~
 from scipy.optimize import curve_fit
-fit_results = curve_fit(fitted_function, x_data, y_data, p0=[1])
+fit_results = curve_fit(f, x_data, y_data, p0=[1])
 print(fit_results)
 ~~~
 {: .language-python}
@@ -124,9 +124,9 @@ a_fit = fit_results[0][0]
 Lets see how good the fit is:
 ~~~
 plt.plot(x_data, y_data, label='Potential Due To Spring')
-plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit', ls='--')
+plt.plot(x_data, f(x_data, a_fit), label='Best Fit', ls='--')
 plt.xlabel('$x/R$', fontsize=14)
-plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.ylabel(r'$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
 plt.grid()
 plt.legend()
 plt.show()
@@ -137,12 +137,12 @@ Now lets see how well it does in the region $$x:2R \to 5R$$:
 
 ~~~
 x_data = np.linspace(2, 5, 100)
-y_data = np.array([potential(x_R) for x_R in x_data])
+y_data = np.array([potential(x_R, 0, 0) for x_R in x_data])
 
 plt.plot(x_data, y_data, label='Potential Due To Spring')
-plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit')
+plt.plot(x_data, f(x_data, a_fit), ls='--', label='Best Fit')
 plt.xlabel('$x/R$', fontsize=14)
-plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.ylabel(r'$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
 plt.grid()
 plt.legend()
 plt.show()
@@ -153,12 +153,12 @@ Not so good in this region! What about the region $$x:200R \to 210R$$?
 
 ~~~
 x_data = np.linspace(200, 210, 100)
-y_data = np.array([potential(x_R) for x_R in x_data])
+y_data = np.array([potential(x_R, 0, 0) for x_R in x_data])
 
 plt.plot(x_data, y_data, label='Potential Due To Spring')
-plt.plot(x_data, fitted_function(x_data, a_fit), label='Best Fit')
+plt.plot(x_data, f(x_data, a_fit), ls='--', label='Best Fit')
 plt.xlabel('$x/R$', fontsize=14)
-plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
+plt.ylabel(r'$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
 plt.grid()
 plt.legend()
 plt.show()
@@ -175,13 +175,13 @@ Clearly the fit (done in the region $$x:100R \to 110R$$) better extrapolates to 
 
 Using our fit we have
 
-$$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x}) \approx \frac{a}{x/R}$$
+$$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(x\hat{x}) \approx \frac{a}{x/R}$$
 
 or
 
-$$V(x\hat{x}) \approx \left( \frac{Qa}{8 \pi^2 \epsilon_0 x} \right) = \frac{a}{2 \pi}\frac{Q}{4 \pi \epsilon_0 x}$$
+$$V(x\hat{x}) \approx a\left( \frac{Q}{4 \pi \epsilon_0 x} \right)$$
 
-If you print `a_fit` you should find that it is approximately equal to $$2 \pi$$ and thus 
+If you print `a_fit` you should find that it is approximately equal to $$1$$ and thus 
 
 $$V(x\hat{x}) \approx \frac{Q}{4 \pi \epsilon_0 x}$$
 
