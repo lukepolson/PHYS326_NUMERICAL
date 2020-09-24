@@ -13,45 +13,55 @@ keypoints:
 - "SciPy has functions for fitting data to complicated funcitonal forms"
 ---
 
+# Preliminary
+These are the packages we will use:
+
+~~~
+import numpy as np
+import matplotlib.pyplot as plt
+~~~
+{: .language-python}
+
 Consider a uniform line-charge distribution parametetrized by $$\theta$$ with total charge $$Q$$ located at
 
 $$\vec{r} = (R\cos(2\theta), R\sin(2\theta), R\theta)$$
 
 for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
 
+
 # Part 1
 > Plot the potential along the $$x$$ axis for $$x:2R \to 10R$$.
 
 It can be shown that
 
-$$V(x\hat{x}) = \frac{Q}{8 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \frac{d\theta}{\sqrt{(x-R\cos\theta)^2+R^2\sin^2\theta + \theta^2}} $$
+$$V(\vec{r}) = \frac{Q}{8 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \frac{1}{\sqrt{(x-R\cos(2\theta'))^2+(y-R\sin(2\theta'))^2 + (z-R\theta')^2}} d\theta' $$
 
 However, for plotting, we need to plot a dimensionless quantity. We can rearange the integral to be dimensionless and obtain the following expression:
 
-$$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x}) = \int_{0}^{2\pi}\frac{1}{\sqrt{(x/R-\cos(2\theta'))^2+\sin(2\theta')^2+\theta'^2}}d\theta'$$
+$$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r}) = \int_{0}^{2\pi}\frac{1}{\sqrt{(x/R-\cos(2\theta'))^2+(y/R-\sin(2\theta'))^2+(z/R-\theta')^2}}d\theta'$$
 
-Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$$).
+Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r})$$).
 
 ~~~
-def integrand(theta, x_R):
-    return 1/np.sqrt((x_R-np.cos(2*theta))**2+np.sin(2*theta)**2+theta**2)
-def potential(x_R):
-    return quad(integrand, 0, 2*np.pi, args=[x_R])[0]
+def integrand(theta, x_R, y_R, z_R):
+    return 1/np.sqrt((x_R-np.cos(2*theta))**2+(y_R-np.sin(2*theta))**2+(z_R-theta)**2)
+def potential(x_R, y_R, z_R):
+    return quad(integrand, 0, 2*np.pi, args=(x_R, y_R, z_R))[0]
 ~~~
 {: .language-python}
 
 Now we evaluate the potential for many different values of $$x$$ from $$x/R: 2 \to 10$$.
 
 ~~~
-x_Rs = np.linspace(2,10,1000)
-potentials = np.vectorize(potential)(x_R)
+x_R = np.linspace(2,10,1000)
+potentials = np.vectorize(potential)(x_R, 0, 0)
 ~~~
 {: .language-python}
 
 And now we can plot like we've done in tutorial 1.
 
 ~~~
-plt.plot(x_Rs, potentials)
+plt.plot(x_R, potentials)
 plt.xlabel('$x/R$', fontsize=14)
 plt.ylabel(r'$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(x\hat{x})$', fontsize=14)
 plt.grid()
