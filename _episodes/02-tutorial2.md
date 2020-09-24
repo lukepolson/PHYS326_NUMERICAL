@@ -24,9 +24,9 @@ import matplotlib.pyplot as plt
 
 Consider a uniform line-charge distribution parametetrized by $$\theta$$ with total charge $$Q$$ located at
 
-$$\vec{r} = (R\cos(2\theta), R\sin(2\theta), R\theta)$$
+$$\vec{r} = (R\cos(\theta), R\sin(\theta), R\theta)$$
 
-for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
+for $$-2\pi \leq \theta \leq 2\pi$$. This represents a ''spring'' of charge of with total $$Q$$. 
 
 
 # Part 1
@@ -34,13 +34,13 @@ for $$-\pi \leq \theta \leq \pi$$. This represents a ''spring'' of charge of wit
 
 It can be shown that
 
-$$V(\vec{r}) = \frac{Q}{8 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \frac{1}{\sqrt{(x-R\cos(2\theta'))^2+(y-R\sin(2\theta'))^2 + (z-R\theta')^2}} d\theta' $$
+$$V(\vec{r}) = \frac{Q}{16 \pi^2 \epsilon_0} \int_{-2\pi}^{2 \pi} \frac{1}{\sqrt{(x-R\cos(\theta'))^2+(y-R\sin(\theta'))^2 + (z-R\theta')^2}} d\theta' $$
 
 However, for plotting, we need to plot a dimensionless quantity. We can rearange the integral to be dimensionless and obtain the following expression:
 
-$$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r}) = \int_{0}^{2\pi}\frac{1}{\sqrt{(x/R-\cos(2\theta'))^2+(y/R-\sin(2\theta'))^2+(z/R-\theta')^2}}d\theta'$$
+$$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(\vec{r}) = \frac{1}{4\pi}\int_{-2\pi}^{2\pi}\frac{1}{\sqrt{(x/R-\cos(\theta'))^2+(y/R-\sin(\theta'))^2+(z/R-\theta')^2}}d\theta'$$
 
-Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r})$$).
+Note that I keep a factor of $$4 \pi \epsilon_0$$ together. Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r})$$).
 
 ~~~
 def integrand(theta, x_R, y_R, z_R):
