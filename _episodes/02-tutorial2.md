@@ -70,6 +70,8 @@ plt.show()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t2p1.png){:width="50%"}
+
 # Part 2
 > For the region $$x:100R \to 110R$$, fit the potential to the curve $$f(x;a)=\frac{a}{x/R}$$. What value of $$a$$ do you get? Then, using this value of $$a$$, plot $$V(x\hat{x})$$ and $$f(x;a)$$ on the same plot in 
 > * the region $$x:2R \to 5R$$.
@@ -133,6 +135,8 @@ plt.show()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t2p2.png){:width="50%"}
+
 Now lets see how well it does in the region $$x:2R \to 5R$$:
 
 ~~~
@@ -149,6 +153,8 @@ plt.show()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t2p3.png){:width="50%"}
+
 Not so good in this region! What about the region $$x:200R \to 210R$$?
 
 ~~~
@@ -164,6 +170,8 @@ plt.legend()
 plt.show()
 ~~~
 {: .language-python}
+
+![pic1](../fig/t2p4.png){:width="50%"}
 
 Clearly the fit (done in the region $$x:100R \to 110R$$) better extrapolates to the region $$x:200R \to 210R$$ than it does to the region $$x:2R \to 5R$$ which is as to be expected.
 
