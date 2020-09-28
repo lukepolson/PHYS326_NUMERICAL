@@ -40,7 +40,7 @@ However, for plotting, we need to plot a dimensionless quantity. We can rearange
 
 $$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(\vec{r}) = \frac{1}{4\pi}\int_{-2\pi}^{2\pi}\frac{1}{\sqrt{(x/R-\cos(\theta'))^2+(y/R-\sin(\theta'))^2+(z/R-\theta')^2}}d\theta'$$
 
-Note that I keep a factor of $$4 \pi \epsilon_0$$ together. Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{8 \pi^2 \epsilon_0 R}{Q} \right)V(\vec{r})$$).
+Note that I keep a factor of $$4 \pi \epsilon_0$$ together. Now we define the integrand and the "potential" (by "potential" I really mean the dimensionless $$\left( \frac{4 \pi \epsilon_0 R}{Q} \right)V(\vec{r})$$).
 
 ~~~
 def integrand(theta, x_R, y_R, z_R):
