@@ -199,7 +199,7 @@ plt.title('Potential inside square')
 
 # Part 2
 
-Now we will create an animated gif of a 3D plot that shows the potential in the region $$x \in [-a, a]$$ and $$y \in [-a, a]$$. Our gif will be of a surface plot the rotates in the $$\phi$$ direction as time progresses. Creating animations in python using matplotlib is not a difficult task. First we define two functions: `init` and `anim`.
+Now we will create an animated gif of a 3D plot that shows the potential in the region $$x \in [-a, a]$$ and $$y \in [-a, a]$$. Our gif will be of a surface plot that rotates in the $$\phi$$ direction as time progresses. Creating animations in python using matplotlib is not a difficult task. First we define two functions: `init` and `anim`.
 
 ~~~
 def init():
