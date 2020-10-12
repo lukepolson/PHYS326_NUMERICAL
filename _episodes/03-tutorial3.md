@@ -217,9 +217,8 @@ def animate(i):
 ~~~
 {: .language-python}
 
-* The function `init` sets up our figure and axis with everything we want to be present in the animation in the first frame. Why does such an animation exist? Well if our gif is of a rotating surface, we don't want to have to redraw it in matplotlib every single frame, so it is easier to do this once in an `init` function.
-
-* The function `animate` takes a argument `i` which is the current frame of the animation. The "art" involved in making animations is relates the frame `i` to the changing portion of the animation. For example, if one is plotting an animation of $$\cos(kx-\omega t)$$ where the function should move on the axis, one might set $$t=i$$ so the function shifts a little bit each frame (if it shifts too much, maybe $$t=\frac{1}{100}i$$). The code in the animate function would then be `ax.plot(np.cos(k*x-omega*i))`. In our case we need to rotate our 3d plot. I have found that setting the azimuthal angle `azim` equal to `2*i` (i.e. two times the current frame) makes it so the rotation is not too fast. You can play around with this.
+* The function `init` sets up our figure and axis with everything we want to be present in the animation in the first frame. Why does such an function exist? If our gif is of a rotating surface, we only need to draw the surface once, then change the angle the surface is being viewed at during the `animate` function. Hence we may as well plot the surface only once during the `init` function.
+* The function `animate` takes a argument `i` which is the current frame of the animation. The challenge in creating animations is relating the frame `i` to the changing feature in the animation. For example, if one is plotting an animation of $$\cos(kx-\omega t)$$, one might set $$t=i$$ so the function shifts a little bit each frame (if it moves too quickly, $$t=\frac{1}{100}i$$ will make it move in slow-mo). The code in the animate function would then be `ax.plot(np.cos(k*x-omega*i))`. In our case we need to rotate our 3d plot. I have found that setting the azimuthal angle `azim` equal to `2*i` (i.e. two times the current frame) makes it so the rotation is not too fast. You can play around with this.
 
 Now we need to feed in these two functions into a special matplotlib function which creates and saves the animation. I will also create an axes and the figure.
 
@@ -240,7 +239,7 @@ Lets examine all the parameters passed to the animate function
 * `frames`: The number of frames to use in the animation (180 frames where `azim=2*i` means the gif will contain a full 360 degrees rotation)
 * `inteveral`: The time between frames in milliseconds. Note that **this does not define the frame rate**: it is slightly more complicated but I find 50 is a good value.
 
-It's not until we save the animation that we actually specify the frame rate. You'll see this above in the `ani.save`. All you need to worry about in that line is that we named the gif, and we specified the frame rate at 20 frames per second. You have now created a gif using python!
+It's not until we save the animation that we actually specify the frame rate. In otherwords, you can think of `ani` as a sequence of images which we can flip through at any speed we like; this speed is specified by `fps` in `ani.save`. You have now created a gif using python!
 
 > ## Saving Animations
 > You made need to experiment with the `writer` argument of `ani.save` depending on your operating system. Use google to help you out!
