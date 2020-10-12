@@ -82,7 +82,7 @@ fig.tight_layout()
 ~~~
 {: .language-python}
 
-![pic1](../fig/t3p1.png){:width="50%"}
+![pic1](../fig/t3p1.png){:width="65%"}
 
 We eventually need to solve for the potential **everywhere** in the square. To do this let's first create a $$100 \times 100$$ 2D array that will store all the values of the potential. We also create a meshgrid that corresponds to the $$(x,y)$$ coordinates of the potential.
 
