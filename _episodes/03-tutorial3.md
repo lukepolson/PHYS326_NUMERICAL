@@ -242,7 +242,7 @@ Lets examine all the parameters passed to the animate function
 
 It's not until we save the animation that we actually specify the frame rate. You'll see this above in the `ani.save`. All you need to worry about in that line is that we named the gif, and we specified the frame rate at 20 frames per second. You have now created a gif using python!
 
-![pic3](../fig/t3p3.png){:width="50%"}
+![pic3](../fig/t3p3.gif){:width="50%"}
 
 
 
