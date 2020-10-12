@@ -181,7 +181,7 @@ potential = compute_potential(potential, n_iter=10000)
 
 Note that this is **much** faster than the first method using forloops in python.
 
-## Preliminary Plot
+### Preliminary Plot
 
 We can create a preliminary color plot to see the potential everywhere.
 
