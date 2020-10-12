@@ -21,6 +21,22 @@ keypoints:
 > * $$V(-a, y) = V_0 \frac{1}{2}((y/a)^2+(y/a))$$
 > 
 
+# Preliminary
+
+First we import the packages we will be using
+
+~~~
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import PillowWriter
+from matplotlib import cm
+~~~
+{: .language-python}
+
+We will be using `numba` later on; we will import it when needed.
+
 # Part 1
 
 > Use the implicit central method to find the potential $$V(x,y)$$ in the square and make a surface plot
@@ -65,6 +81,8 @@ ax[1,1].plot(edge, lower_x)
 fig.tight_layout()
 ~~~
 {: .language-python}
+
+![pic1](../fig/t3p1.png){:width="50%"}
 
 We eventually need to solve for the potential **everywhere** in the square. To do this let's first create a $$100 \times 100$$ 2D array that will store all the values of the potential. We also create a meshgrid that corresponds to the $$(x,y)$$ coordinates of the potential.
 
@@ -163,6 +181,22 @@ potential = compute_potential(potential, n_iter=10000)
 
 Note that this is **much** faster than the first method using forloops in python.
 
+## Preliminary Plot
+
+We can create a preliminary color plot to see the potential everywhere.
+
+~~~
+plt.imshow(potential)
+plt.xlabel('$x/a$')
+plt.ylabel('$y/a$')
+cbar = plt.colorbar()
+cbar.set_label('$V/V_0$')
+plt.title('Potential inside square')
+~~~
+{: .language-python}
+
+![pic2](../fig/t3p2.png){:width="50%"}
+
 # Part 2
 
 Now we will create an animated gif of a 3D plot that shows the potential in the region $$x \in [-a, a]$$ and $$y \in [-a, a]$$. Our gif will be of a surface plot the rotates in the $$\phi$$ direction as time progresses. Creating animations in python using matplotlib is not a difficult task. First we define two functions: `init` and `anim`.
@@ -207,6 +241,8 @@ Lets examine all the parameters passed to the animate function
 * `inteveral`: The time between frames in milliseconds. Note that **this does not define the frame rate**: it is slightly more complicated but I find 50 is a good value.
 
 It's not until we save the animation that we actually specify the frame rate. You'll see this above in the `ani.save`. All you need to worry about in that line is that we named the gif, and we specified the frame rate at 20 frames per second. You have now created a gif using python!
+
+![pic3](../fig/t3p3.png){:width="50%"}
 
 
 
