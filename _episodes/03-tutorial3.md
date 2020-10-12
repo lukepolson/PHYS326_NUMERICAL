@@ -228,7 +228,7 @@ fig = plt.figure()
 ax = Axes3D(fig)
 ani = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=180, interval=50)
-ani.save('rotate_azimuth_angle_3d_surf.gif',writer='imagemagick',fps=20)
+ani.save('rotate_azimuth_angle_3d_surf.gif',writer='pillow',fps=20)
 ~~~
 {: .language-python}
 
@@ -241,6 +241,10 @@ Lets examine all the parameters passed to the animate function
 * `inteveral`: The time between frames in milliseconds. Note that **this does not define the frame rate**: it is slightly more complicated but I find 50 is a good value.
 
 It's not until we save the animation that we actually specify the frame rate. You'll see this above in the `ani.save`. All you need to worry about in that line is that we named the gif, and we specified the frame rate at 20 frames per second. You have now created a gif using python!
+
+> ## Saving Animations
+> You made need to experiment with the `writer` argument of `ani.save` depending on your operating system. Use google to help you out!
+{: .callout}
 
 ![pic3](../fig/t3p3.gif){:width="50%"}
 
