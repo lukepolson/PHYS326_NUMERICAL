@@ -186,12 +186,13 @@ Note that this is **much** faster than the first method using forloops in python
 We can create a preliminary color plot to see the potential everywhere.
 
 ~~~
-plt.imshow(potential)
-plt.xlabel('$x/a$')
-plt.ylabel('$y/a$')
-cbar = plt.colorbar()
-cbar.set_label('$V/V_0$')
-plt.title('Potential inside square')
+fig, ax = plt.subplots(1, 1, figsize=(8,6))
+clr_plot = ax.pcolor(xv, yv, potential)
+ax.set_xlabel('x/a')
+ax.set_ylabel('y/a')
+fig.colorbar(clr_plot, label='$V/V_0$')
+ax.set_title('Potential in square')
+plt.show()
 ~~~
 {: .language-python}
 
