@@ -161,7 +161,7 @@ def compute_potential(potential, n_iter):
     for n in range(n_iter):
         for i in range(1, length-1):
             for j in range(1, length-1):
-                potential[i][j] = 1/4 * (potential[i+1][j] + potential[i-1][j] + potential[i][j+1] + potential[i][j-1])
+                potential[j][i] = 1/4 * (potential[j+1][i] + potential[j-1][i] + potential[j][i+1] + potential[j][i-1])
     return potential
    
 ~~~
