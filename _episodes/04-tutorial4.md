@@ -145,7 +145,7 @@ plt.show()
 
 ![pic1](../fig/t4p2.png){:width="65%"}
 
-To get the true potential at the point we're considering $$\vec{r} = (2R,R/3,5R)$$ we would need to add up all the contributions above. However, since they decrease so quickly (see logarithmic y axis) we usually only need to consider the first few terms for reasonable precision in real life scenarios.
+To get the true potential at the point we're considering $$\vec{r} = (2R,R/3,5R)$$ we would need to add up the contributions from all the different $$V_l$$'s plotted (i.e. sum all the bars together). However, since they decrease so quickly (see logarithmic y axis) we usually only need to consider the first few terms for reasonable precision in real life scenarios. Try plotting with a linear scale if you're skeptical.
 
 > Now consider two points $$\vec{r}_1 = (2R,R/3,5R)$$ and $$\vec{r}_2 = (R/5,7R,-3R)$$. Plot $$V_l$$ vs. $$l$$ with the bars next to eachother.
 
