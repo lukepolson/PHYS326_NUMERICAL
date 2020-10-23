@@ -81,48 +81,68 @@ plt.legend()
 
 # Part 2: Bar Plots in Python
 
-For this part of the tutorial, we will consider example 3.4 in Griffiths E&M: suppose, however, that $$b=2a$$ so that the potential everywhere becomes 
+For this part of the tutorial, we will consider example 3.7 in Griffiths E&M: 
 
-$$V(x,y) = \frac{4V_0}{\pi} \sum_{n=1,3,5,...} \frac{1}{n}\frac{\cosh(n \pi x/a)}{\cosh(2 n \pi)} \sin(n \pi y / a)  $$
+$$V(r, \theta) = \sum_{l=0}^{\infty} \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} V_0(\theta) P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
 
-we can define the nth term in this sum as 
+we can define the lth term in this sum as 
 
-$$V_n(x,y) = \frac{4V_0}{\pi} \frac{1}{n}\frac{\cosh(n \pi x/a)}{\cosh(2 n \pi)} \sin(n \pi y / a) $$
+$$V_l(r, \theta) = \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} V_0(\theta) P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
 
-> Consider the point $$\vec{r}=(a,a/3,0)$$. Make a bar plot of $$V_n$$ vs. $$n$$ for $$n$$ in the range 1 to 33 to show how quickly the terms decay. Use a semilogy axis and only consider odd $$n$$ (as even $$n$$ terms are equal to zero).
+> Consider the potential $$V_0(\theta) = V_0 e^{-(\theta-\pi/2)^2 / \pi^2}$$ and the point $$\vec{r}=(2R,R/3,0)$$. Make a bar plot of $$V_l$$ vs. $$l$$ for $$l$$ in the range 1 to 33 to show how quickly the terms decay.
 
-First define $$V_n$$ and get arratst of $$n$$'s and $$V_n$$'s for odd $$n$$ in the range 1 to 33.
+Firstly note that we will need to plot
+
+$$ \frac{V_l}{V_0} = \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} e^{-(\theta-\pi/2)^2 / \pi^2} P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
+
+Let's $$V_l$$ and get arrays of $$l$$'s and $$V_l$$'s in the range 1 to 33.
 
 ~~~
-def Vn(x_a, y_a, n):
-    return (1/n)*np.cosh(n*np.pi*x_a)/np.cosh(2*n*np.pi) * np.sin(n * np.pi * y_a)
-    
-ns = np.arange(1, 33, 2)
-Vns = Vn(1, 1/3, ns)
+def integrand(theta_p, l):
+    return np.exp(-(theta_p - np.pi/2)/np.pi**2)*legendre(l)(np.cos(theta_p)) * np.sin(theta_p)
+
+def Vl(x_R, y_R, z_R, l):
+    r_R = np.sqrt(x_R**2+y_R**2+z_R**2)
+    theta = np.arctan(np.sqrt(x_R**2+y_R**2)/z_R)
+    integral = quad(integrand, 0, np.pi, args=(l))[0]
+    return (2*l+1)/2 * (1/r_R)**(l+1) * integral * legendre(l)(np.cos(theta))
 ~~~
 {: .language-python}
+
+Now get data
+
+~~~
+x_R0, y_R0, z_R0 = 2, 1/3, 5
+ls = np.arange(0, 25, 1)
+Vls = np.vectorize(Vl)(x_R0, y_R0, z_R0, ls)
+~~~
+{: .language-python}
+
 
 Now we can make a simple bar plot.
 
 ~~~
-plt.bar(ns, Vns)
+plt.figure(figsize=(12,5))
+plt.bar(ls, Vls)
 plt.semilogy()
-plt.xlabel('$n$')
-plt.ylabel(r'$V_n\cdot \left(\frac{\pi}{4V_0} \right)$')
+plt.xlabel('$l$')
+plt.ylabel(r'$V_l/V_0$')
 plt.minorticks_off()
-plt.xticks(ns)
+plt.xticks(ls)
+plt.title('Decaying Terms in Griffiths Example 3.7')
 plt.show()
 ~~~
 {: .language-python}
 
-> Now consider two points $$\vec{r}_1 = (a,a/2,0)$$ and $$\vec{r}_2 = (a,a/3,0)$$. Plot $$V_n$$ vs. $$n$4 with the bars next to eachother.
+> Now consider two points $$\vec{r}_1 = (2R,R/3,5R)$$ and $$\vec{r}_2 = (R/5,7R,-3R)$$. Plot $$V_l$$ vs. $$l$ with the bars next to eachother.
 
 This is a little finicky in python. First lets define out arrays
 
 ~~~
-ns = np.arange(1, 33, 2)
-Vns_r1 = Vn(1, 1/2, ns)
-Vns_r2 = Vn(1, 1/3, ns)
+x_R0, y_R0, z_R0 = 2, 1/3, 5
+Vls_point1 = np.vectorize(Vl)(x_R0, y_R0, z_R0, ls)
+x_R0, y_R0, z_R0 = 1/5, 7, -3
+Vls_point2 = np.vectorize(Vl)(x_R0, y_R0, z_R0, ls)
 ~~~
 {: .language-python}
 
@@ -130,19 +150,18 @@ In order to plot the bars next to eachother, we need to shift the n's slightly. 
 
 ~~~
 barWidth = 0.4
-ns1 = ns-barWidth/2
-ns2 = ns+barWidth/2
+ls1 = ls-barWidth/2
+ls2 = ls+barWidth/2
 
-plt.figure(figsize=(10,5))
-plt.title('Expansion terms for Griffiths Example 3.4')
-plt.grid()
-plt.bar(ns1, Vns_r1, width=barWidth, label=r'$\vec{r}=(a,a/2,0)$')
-plt.bar(ns2, Vns_r2, width=barWidth, label=r'$\vec{r}=(a,a/3,0)$')
-plt.xlabel('Term $n$ in Expansion')
-plt.ylabel(r'$V_n(\vec{r})\cdot \left(\frac{\pi}{4V_0} \right)$')
+plt.figure(figsize=(12,5))
+plt.title('Expansion terms for Griffiths Example 3.7')
+plt.bar(ls1, Vls_point1, width=barWidth, label=r'$\vec{r}=(2R,1/3R,5R)$')
+plt.bar(ls2, Vls_point2, width=barWidth, label=r'$\vec{r}=(1/5R,7R,-3R)$')
+plt.xlabel('Term $l$ in Expansion')
+plt.ylabel(r'$V_l/V_0$')
 plt.semilogy()
 plt.minorticks_off()
-plt.xticks(ns)
+plt.xticks(ls)
 plt.legend(loc='upper right', fontsize=14)
 plt.show()
 ~~~
