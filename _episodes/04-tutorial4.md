@@ -13,10 +13,23 @@ keypoints:
 - "Barplots are generally easy to make in python, but can often be a little finnicky"
 ---
 
+# Preliminary
+
+Lets import all the packages we will use today. Note that we are importing the hermite and legendre polynomials.
+
+~~~
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+from scipy.special import legendre
+from scipy.special import hermite
+from scipy.special import factorial
+~~~
+{: .language-python}
+
 # Part 1: Special Functions in Python
 
-Throughout your studies in physics, many special functions will be encountered. These include things like the legendre, laguerre, and hermite polynomials. While it is possible to look these up in a table and copy them into python, scipy has these polynomials already coded up. In this tutorial we will look at the hermite polynomials.
-
+Throughout your studies in physics, many special functions will be encountered. These include things like the legendre, laguerre, and hermite polynomials. While it is possible to look these up in a table and copy them into python, scipy has these polynomials already cooked up. In this tutorial we will look at the hermite polynomials.
 
 > Recall from PHYS 215 that wavefunction for the harmonic oscillator can be written as 
 >
@@ -24,14 +37,8 @@ Throughout your studies in physics, many special functions will be encountered. 
 >
 > where $$\xi=\sqrt{m\omega/\hbar} x$$ and $$H_n$$ are the Hermite polynomials. Plot $$\psi_0$$, $$\psi_1$$, $$\psi_2$$, $$\psi_4$$, and $$\psi_8$$ as a function of $$\xi$$.
 
-First we import the hermite polynomials from scipy
 
-~~~
-from scipy.special import hermite
-~~~
-{: .language-python}
-
-This function takes in a parameter $n$ and returns a `poly1d` object.
+Now we will use the `hermite` function that we imported at the beginning. This function takes in a parameter $n$ and returns a `poly1d` object.
 
 ~~~
 hermite_2 = hermite(2)
@@ -45,7 +52,7 @@ hermite_2(10)
 ~~~
 {: .language-python}
 
-Alternative, we can do this as follows:
+Alternative, we can do this more quickly as follows:
 
 ~~~
 hermite(2)(10)
