@@ -79,6 +79,8 @@ plt.legend()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t4p1.png){:width="65%"}
+
 # Part 2: Bar Plots in Python
 
 For this part of the tutorial, we will consider example 3.7 in Griffiths E&M: 
@@ -134,7 +136,9 @@ plt.show()
 ~~~
 {: .language-python}
 
-> Now consider two points $$\vec{r}_1 = (2R,R/3,5R)$$ and $$\vec{r}_2 = (R/5,7R,-3R)$$. Plot $$V_l$$ vs. $$l$ with the bars next to eachother.
+![pic1](../fig/t4p2.png){:width="65%"}
+
+> Now consider two points $$\vec{r}_1 = (2R,R/3,5R)$$ and $$\vec{r}_2 = (R/5,7R,-3R)$$. Plot $$V_l$$ vs. $$l$$ with the bars next to eachother.
 
 This is a little finicky in python. First lets define out arrays
 
@@ -166,5 +170,7 @@ plt.legend(loc='upper right', fontsize=14)
 plt.show()
 ~~~
 {: .language-python}
+
+![pic1](../fig/t4p3.png){:width="65%"}
 
 Note that the terms decay **very** quickly, but differently depending on the point you are situated at.
