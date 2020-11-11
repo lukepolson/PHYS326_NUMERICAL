@@ -143,6 +143,8 @@ To examine what's going on here, lets look only at the upper left plot.
 * Next we make a quiver plot in the line `Q = ax.quiver(xq, yq, mag_field_x1, mag_field_y1, units='width', color='r')`. A quiver plot takes a coordinate $$(x,y)$$ and plots an arrow proportional to $$(B_x(x,y), B_y(x,y))$$ at that coordinate; in otherwords, it plots a vector field. 
 * The line `qk = ax.quiverkey(Q, 0.8, 1.05, 2, r'$2 \cdot \left( \frac{4 \pi a}{\mu_0 I} \right)B_s$', labelpos='E', coordinates='axes', fontproperties={'size':12})` provides a legend relating the length of the arrows to the magnititude $$\sqrt{B_x^2 + B_y^2}$$ of each vector. The frst two numbers 0. and 1.05 give the location of where to put the legend. The next argument "2" enforces that the length of the arrow in the legend be equal to what the length of an arrow with numerical value of 2 would give on the quiver plot. 
 
+This is one way to view a three dimensional vector field (quiver plot for two of the dimensions ($$x$$ and $$y$$) and heat plot for the third dimension $$z$$) but in part 2 we exploit the azimuthal symmetry of this problem and create a simplified plot...
+
 # Part 2
 > Make a streamplot of $$B_x$$ and $$B_z$$ in the plane $$y=0$$ for $$x \in [-2a, 2a]$$ and $$z \in [-2a, 2a]$$.
 
@@ -168,7 +170,12 @@ ax.scatter([1], [0], color='blue', zorder=100)
 ax.set_xlabel('$x/a$')
 ax.set_ylabel('$z/a$')
 ax.set_title('Magnetic Field Lines')
+plt.show()
 ~~~
 {: .language-python}
+
+![pic1](../fig/t5p2.png){:width="65%"}
+
+
 
 Note that we also add two additional blue dots that are located at the position where the ring intersects the plane $$y=0$$.
