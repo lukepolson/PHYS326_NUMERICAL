@@ -98,7 +98,7 @@ we can define the lth term in this sum as
 
 $$V_l(r, \theta) = \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} V_0(\theta) P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
 
-> Consider the potential $$V_0(\theta) = V_0 e^{-(\theta-\pi/2)^2 / \pi^2}$$ and the point $$\vec{r}=(2R,R/3,0)$$. Make a bar plot of $$|V_l|$$ vs. $$l$$ for $$l$$ in the range 1 to 33 to show how quickly the terms decay.
+> Consider the potential $$V_0(\theta) = V_0 e^{-(\theta-\pi/2)^2 / \pi^2}$$ and the point $$\vec{r}=(2R,R/3,0)$$. Make a bar plot of the absolute value of $$V_l$$ vs. $$l$$ for $$l$$ in the range 1 to 33 to show how quickly the terms decay.
 
 Firstly note that we will need to plot
 
