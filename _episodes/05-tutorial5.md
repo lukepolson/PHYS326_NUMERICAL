@@ -135,6 +135,8 @@ plt.show()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t5p1.png){:width="65%"}
+
 To examine what's going on here, lets look only at the upper left plot. 
 
 * Firstly we make a heat plot in the line `cs = ax.pcolor(xh, yh, mag_field_z1, cmap=cmap, vmin=0, vmax=8)`. This makes a color plot of the z-component of the magnetic field. The `vmin` and `vmax` arguments were carefully chosen so that the numerical values of the magnetic field mapped to reasonable colors in the color plot. 
