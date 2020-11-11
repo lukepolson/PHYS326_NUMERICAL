@@ -12,6 +12,21 @@ keypoints:
 - "matplotlib has many different plotting capablities"
 ---
 
+# Preliminary
+
+Lets import all the packages we will use today.
+
+~~~
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import cm
+cmap = cm.inferno
+import scipy as sp
+from scipy.integrate import quad
+~~~
+{: .language-python}
+
+
 > Consider a current loop of radius $$a$$ centered at the origin in the $$z=0$$ plane with current travelling in a counter-clockwise direction in the $$xy$$ plane. 
 
 # Part 1
