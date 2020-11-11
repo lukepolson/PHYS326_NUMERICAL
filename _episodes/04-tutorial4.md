@@ -98,13 +98,13 @@ we can define the lth term in this sum as
 
 $$V_l(r, \theta) = \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} V_0(\theta) P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
 
-> Consider the potential $$V_0(\theta) = V_0 e^{-(\theta-\pi/2)^2 / \pi^2}$$ and the point $$\vec{r}=(2R,R/3,0)$$. Make a bar plot of $$V_l$$ vs. $$l$$ for $$l$$ in the range 1 to 33 to show how quickly the terms decay.
+> Consider the potential $$V_0(\theta) = V_0 e^{-(\theta-\pi/2)^2 / \pi^2}$$ and the point $$\vec{r}=(2R,R/3,0)$$. Make a bar plot of $$|V_l|$$ vs. $$l$$ for $$l$$ in the range 1 to 33 to show how quickly the terms decay.
 
 Firstly note that we will need to plot
 
 $$ \frac{V_l}{V_0} = \frac{2l+1}{2} \left(\frac{R}{r}\right)^{l+1}  \left( \int_{0}^{\pi} e^{-(\theta-\pi/2)^2 / \pi^2} P_l(\cos\theta) \sin \theta d\theta \right) P_l(\cos \theta) $$
 
-Let's $$V_l$$ and get arrays of $$l$$'s and $$V_l$$'s in the range 1 to 33.
+Let's get arrays of $$l$$'s and $$V_l$$'s in the range 1 to 33. Here we use a little trick; since we are doing numerical integration here, an integral which may be truely equal to zero might not evaluate at exactly zero. However, if the magnitude of the error on the integral is bigger than the magnitude of the result of the integral, it is likely the integral is equal to zero.
 
 ~~~
 def integrand(theta_p, l):
@@ -113,8 +113,11 @@ def integrand(theta_p, l):
 def Vl(x_R, y_R, z_R, l):
     r_R = np.sqrt(x_R**2+y_R**2+z_R**2)
     theta = np.arctan(np.sqrt(x_R**2+y_R**2)/z_R)
-    integral = quad(integrand, 0, np.pi, args=(l))[0]
-    return (2*l+1)/2 * (1/r_R)**(l+1) * integral * legendre(l)(np.cos(theta))
+    integral, error = quad(integrand, 0, np.pi, args=(l))
+    if np.abs(error) > np.abs(integral):
+        return 0
+    else:
+        return (2*l+1)/2 * (1/r_R)**(l+1) * integral * legendre(l)(np.cos(theta))
 ~~~
 {: .language-python}
 
@@ -128,11 +131,11 @@ Vls = np.vectorize(Vl)(x_R0, y_R0, z_R0, ls)
 {: .language-python}
 
 
-Now we can make a simple bar plot.
+Now we can make a simple bar plot. Note that we are plotting the absolute value of the $$V_l$$'s.
 
 ~~~
 plt.figure(figsize=(12,5))
-plt.bar(ls, Vls)
+plt.bar(ls, np.abs(Vls))
 plt.semilogy()
 plt.xlabel('$l$')
 plt.ylabel(r'$V_l/V_0$')
@@ -162,18 +165,18 @@ Vls_point2 = np.vectorize(Vl)(x_R0, y_R0, z_R0, ls)
 In order to plot the bars next to eachother, we need to shift the n's slightly. We also specify `barWidth`: 0.4 works nicely for this plot but you may need to adjust this value for plots you make. You should try changing `barWidth` and see how it affects this plot.
 
 ~~~
-barWidth = 0.4
+barWidth = 0.2
 ls1 = ls-barWidth/2
 ls2 = ls+barWidth/2
 
 plt.figure(figsize=(12,5))
 plt.title('Expansion terms for Griffiths Example 3.7')
-plt.bar(ls1, Vls_point1, width=barWidth, label=r'$\vec{r}=(2R,1/3R,5R)$')
-plt.bar(ls2, Vls_point2, width=barWidth, label=r'$\vec{r}=(1/5R,7R,-3R)$')
+plt.bar(ls1, np.abs(Vls_point1), width=barWidth, label=r'$\vec{r}=(2R,1/3R,5R)$')
+plt.bar(ls2, np.abs(Vls_point2), width=barWidth, label=r'$\vec{r}=(1/5R,7R,-3R)$')
 plt.xlabel('Term $l$ in Expansion')
-plt.ylabel(r'$V_l/V_0$')
-plt.semilogy()
+plt.ylabel(r'$|V_l/V_0|$')
 plt.minorticks_off()
+plt.semilogy()
 plt.xticks(ls)
 plt.legend(loc='upper right', fontsize=14)
 plt.show()
