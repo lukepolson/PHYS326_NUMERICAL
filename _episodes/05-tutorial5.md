@@ -135,7 +135,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-![pic1](../fig/t5p1.png){:width="65%"}
+![pic1](../fig/t5p1.png){:width="80%"}
 
 To examine what's going on here, lets look only at the upper left plot. 
 
@@ -174,8 +174,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-![pic1](../fig/t5p2.png){:width="65%"}
-
+![pic1](../fig/t5p2.png){:width="80%"}
 
 
 Note that we also add two additional blue dots that are located at the position where the ring intersects the plane $$y=0$$.
