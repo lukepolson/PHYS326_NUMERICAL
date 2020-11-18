@@ -62,8 +62,8 @@ xh, yh = np.meshgrid(x, y)
 Now we create a meshgrid which we will use to plot $$B_x$$ and $$B_y$$ as a quiver plot. We choose 20 points in $$ x \in [-2a, 2a]$$ and $$y \in [-2a, 2a]$$. Note that we have chosen less points than in the heat map meshgrid: this is because the quiver plot requires significantly less points than the heat plot, as we will see below.
 
 ~~~
-x = np.linspace(-2, 2, 100)
-y = np.linspace(-2, 2, 100)
+x = np.linspace(-2, 2, 20)
+y = np.linspace(-2, 2, 20)
 xq, yq = np.meshgrid(x, y)
 ~~~
 {: .language-python}
