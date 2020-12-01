@@ -69,7 +69,7 @@ $$ \frac{4 \pi R}{\mu_0 m} \Phi = 2 \pi \int_{0}^{1} \left(\frac{-3(h/R)^2}{((r/
 
 
 # Part 2
-> Write a function to determine $$\Phi(t)$; recall the piecewise form of the function above. Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a few differnt values on $$n$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
+> Write a function to determine $$\Phi(t)$$; recall the piecewise form of the function above. Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a few differnt values on $$n$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
 
 First we import the packages we need
 
