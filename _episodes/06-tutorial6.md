@@ -22,9 +22,7 @@ so the order of buisness will be finding the $$z$$ component of the magnetic fie
 
 
 # Part 1
-> Find $$B_z$$ in the plane $$z=0$$. When the volume of the magnetized object is not intersection the plane $$z=0$$, you can write this as one expression, but when the the magnetized object is intersecting the plane $$z=0$$, the magnetic field will need to be split into two seperate cases. Find all the times when the magnetized object is intersecting the plane $$z=0$$. For a given time $$t$$, how much area of the magnetized object is in the plane $$z=0$$? Then find the magnetic flux in the loop as a function of $$t$$.
-
-The first thing to note is that there are **a lot** of undefined variables. In the end, we want everything in terms of dimensionless quantities (including the EMF); to do so, we will have to use many tricks.
+> Find $$B_z(t)$$ at $$z=0$$. Use this to determine $$\Phi(t)$$ through the ring.
 
 From Griffith's Example 6.1, we know the the magnetic field of a magnetizied sphere at the origin is given be
 
@@ -33,13 +31,13 @@ $$\vec{B} = \begin{cases} \frac{\mu_0}{4\pi} \frac{1}{r^3} \left(3(\vec{m} \cdot
                           
 where $$\vec{m} = \frac{4}{3} \pi a^3 \vec{M}$$. For this problem, we will write everything in terms of $$m$$: the effective total dipole moment of the sphere.
 
-Note that in this problem the sphere is not always at the origin and thus we need to replace $$\vec{r} \to \vec{r}-\vec{r}'$$. First lets examine what $$\vec{r}$$ and $$\vec{r}'$$ should be. Note that we will eventually be integrating the magnetic field over a circle of radius $$R$$ on the plane $$z=0$$; it thus makes sense to choose $$\vec{r} = (r\cos\phi, r\sin\phi, 0)$$. Meanwhile, the moving dipole gives off the same field as an ideal magnetic dipole at the center of the sphere. Thus we should choose $$\vec{r}' = (0, 0, h(t))$$ where $$h(t)$$ is the current height of the center of the sphere above the current loop. 
+Note that in this problem the sphere is not always at the origin and thus we need to replace $$\vec{r} \to \vec{r}-\vec{r}'$$ where $$\vec{r}'$$ is the center of the sphere. Since we are integrating over the area of a circle at $$z=0$$ we have $$\vec{r} = (r\cos\phi, r\sin\phi, 0)$$. The center of the sphere is $$\vec{r}' = (0, 0, h(t))$$ where $$h(t)$$ is the current height of the center of the sphere above the current loop. 
 
-So what is $$h(t)$$? Since the dipole moves at constant velocity $$-v\hat{z}$$ and starts at $$z=2R$$ it should be obvious that $$h(t) = 2R-vt$$. We can now substitute everything in and get
+So what is $$h(t)$$? Since the dipole moves at constant velocity $$-v\hat{z}$$ and starts at $$z=2R$$ it should be obvious that $$h(t) = 2R-vt$$. We can rewrite this in a dimensionless ratio as $$h/R = 2 - (v/R)t = 2-T$$ where $$T \equiv (v/R)t$$. This is a dimensionless variable representing time. Then
 
 $$B_z^{\text{outside sphere}} = \frac{\mu_0 m }{4 \pi}\left(\frac{-3h(t)^2}{(r^2+h(t)^2)^{5/2}} + \frac{1}{(r^2+h(t)^2)^{3/2}} \right)$$
 
-writing this in terms of dimensionless quantities yields
+in terms of dimensionless quantities is 
 
 $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{outside sphere}} = \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right) $$
 
@@ -47,7 +45,7 @@ meanwhile, with $$a = nR$$ we get
 
 $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}$$
 
-Now we need to determine the times when the sphere intesects the plane $$z=0$$. First off, since time $$t$$ has dimensions, I am going to define a dimensionless constant that will help us later. Let $$T \equiv \frac{v}{R}t$$. Thus, the time in this problem is defined in terms of the radius of the ring and the speed at which the magnetic sphere is moving at. Now for the problem at hand. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. See below
+Now we need to determine the times when the sphere intesects the plane $$z=0$$. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. See below
 
 
 ![Intersection of sphere with plane z](../fig/tut7pic2.PNG){:width="50%"}
