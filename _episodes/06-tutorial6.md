@@ -45,7 +45,7 @@ meanwhile, with $$a = nR$$ we get
 
 $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}$$
 
-Now we need to determine the times when the sphere intesects the plane $$z=0$$. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection with radius $$r_i$$ is given by $$r_i = \sqrt{a^2 - h^2} = \sqrt{n^2R^2 - h^2}$$. See below
+Now we need to determine the times when the sphere intesects the plane $$z=0$$. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection has a radius $$r_{int} = \sqrt{n^2R^2 - h^2}$$.
 
 
 ![Intersection of sphere with plane z](../fig/tut7pic2.PNG){:width="50%"}
@@ -55,7 +55,7 @@ Now we need to determine the times when the sphere intesects the plane $$z=0$$. 
 
 For these special times we thus have
 
-$$\Phi = \oint_{r<r_i} B_{z}^{\text{inside sphere}} r dr d\phi +  \oint_{r>r_i} B_{z}^{\text{outside sphere}} r dr d\phi$$
+$$\Phi = \oint_{r<r_{int}} B_{z}^{\text{inside sphere}} r dr d\phi +  \oint_{r>r_{int}} B_{z}^{\text{outside sphere}} r dr d\phi$$
 
 Substituting everything in, trivially integrating over $$\phi$$, and writing in terms of dimensionless quantities we have
 
@@ -68,9 +68,8 @@ Otherwise we get the simpler case of
 $$ \frac{4 \pi R}{\mu_0 m} \Phi = 2 \pi \int_{0}^{1} \left(\frac{-3(h/R)^2}{((r/R)^2+(h/R)^2)^{5/2}} + \frac{1}{((r/R)^2+(h/R)^2)^{3/2}} \right) \frac{r}{R} d\left(\frac{r}{R}\right) $$
 
 
-
 # Part 2
-> Write a function that allows you to determine the magnetic flux through the current loop $$\Phi$$ at some time $$t$$ and for some proportionality constant $$n$$. You will need to be extra careful; remember that at certain times the magnetic sphere intersects the plane $$z=0$$ and thus the magnetic field is given by two different expressions depending on whether or not you are inside the magnet or not. Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a few differnt values on $$n$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
+> Write a function to determine $$\Phi(t)$; recall the piecewise form of the function above. Find the magnetic flux at 1000 time points from when the magnetic sphere goes from $$(0, 0, 2R)$$ to $$(0, 0, -2R)$$ for a few differnt values on $$n$$. Take the negative derivative to determine the EMF induced in the coil. Plot both the magnetic flux and the EMF as a function of time. Compare these plots to Figure 7.23 in Griffith's. Do the plots look different? Why?
 
 First we import the packages we need
 
