@@ -31,7 +31,7 @@ $$\vec{B} = \begin{cases} \frac{\mu_0}{4\pi} \frac{1}{r^3} \left(3(\vec{m} \cdot
                           
 where $$\vec{m} = \frac{4}{3} \pi a^3 \vec{M}$$. For this problem, we will write everything in terms of $$m$$: the effective total dipole moment of the sphere.
 
-Note that in this problem the sphere is not always at the origin and thus we need to replace $$\vec{r} \to \vec{r}-\vec{r}'$$ where $$\vec{r}'$$ is the center of the sphere. Since solving for $$\Phi = \oiint \vec{B} \cdot d\vec{a}$$ requires integrating over a circle at $$z=0$$ we have $$\vec{r} = (r\cos\phi, r\sin\phi, 0)$$. The center of the sphere is $$\vec{r}' = (0, 0, h(t))$$ where $$h(t)$$ is the current height of the center of the sphere above the current loop. 
+Note that in this problem the sphere is not always at the origin and thus we need to replace $$\vec{r} \to \vec{r}-\vec{r}'$$ where $$\vec{r}'$$ is the center of the sphere. Since solving for $$\Phi = \oint \vec{B} \cdot d\vec{a}$$ requires integrating over a circle at $$z=0$$ we have $$\vec{r} = (r\cos\phi, r\sin\phi, 0)$$. The center of the sphere is $$\vec{r}' = (0, 0, h(t))$$ where $$h(t)$$ is the current height of the center of the sphere above the current loop. 
 
 So what is $$h(t)$$? Since the dipole moves at constant velocity $$-v\hat{z}$$ and starts at $$z=2R$$ it should be obvious that $$h(t) = 2R-vt$$. We can rewrite this in a dimensionless ratio as $$h/R = 2 - (v/R)t = 2-T$$ where $$T \equiv (v/R)t$$. This is a dimensionless variable representing time. Then
 
