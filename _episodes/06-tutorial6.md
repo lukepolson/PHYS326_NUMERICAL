@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 7"
+title: "Tutorial 2020/12/02"
 teaching: 30
 exercises: 30
 questions:
@@ -118,6 +118,8 @@ plt.grid()
 ~~~
 {: .language-python}
 
+![pic1](../fig/t7p1.png){:width="80%"}
+
 Interestingly, the flux at any time does not depend on $$n$$.
 
 Now we need to find the induced emf $$\varepsilon$$. Note that our array above is of $$\Phi(T)$$ so we can only directly take $$d\Phi/dT$$ and not $$d\Phi/dt$$ like we need to. Since
@@ -145,5 +147,7 @@ plt.title('Induced EMF in Circular Wire')
 plt.grid()
 ~~~
 {: .language-python}
+
+![pic1](../fig/t7p2.png){:width="80%"}
 
 Lets compare these to the plots in Griffiths. Firstly note that our flux plot does not flatten out like Griffiths; this is due to the fact that the griffiths example is with a cylindrical magnet and not a spherical one. This also explains the difference in the EMF plot which is simply the derivative of the flux plot.
