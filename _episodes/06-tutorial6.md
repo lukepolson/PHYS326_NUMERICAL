@@ -45,7 +45,7 @@ meanwhile, with $$a = nR$$ we get
 
 $$\frac{4 \pi R^3}{\mu_0 m } B_z^{\text{inside sphere}} = \frac{-2}{n^3}$$
 
-Now we need to determine the times when the sphere intesects the plane $$z=0$$. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$-n \leq T-2 \leq n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection has a radius $$r_{int} = \sqrt{n^2R^2 - h^2}$$.
+Now we need to determine the times when the sphere intesects the plane $$z=0$$. We know the sphere intersects the plane $$z=0$$ when $$-a \leq h \leq a$$ or $$-nR \leq h \leq nR$$. Since $$h = 2R - RT$$ we get $$-nR \leq 2R - RT \leq nR$$ or equivalently $$|h/R|<n$$. How much area of the plane does the sphere intesect at a given time $$T$$? A simple diagram shows that the circle of intersection has a radius $$r_{int} = \sqrt{n^2R^2 - h^2}$$.
 
 
 ![Intersection of sphere with plane z](../fig/tut7pic2.PNG){:width="50%"}
@@ -53,7 +53,7 @@ Now we need to determine the times when the sphere intesects the plane $$z=0$$. 
 
 ## Flux When Sphere Intersects z=0
 
-For these special times we thus have
+For these special times $$|h/R|<n$$ we thus have
 
 $$\Phi = \oint_{r<r_{int}} B_{z}^{\text{inside sphere}} r dr d\phi +  \oint_{r>r_{int}} B_{z}^{\text{outside sphere}} r dr d\phi$$
 
